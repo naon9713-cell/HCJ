@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>焼き Family MT</title>
+<style>
+/* ===================== 기본 / 토큰 ===================== */
+*,*::before,*::after{box-sizing:border-box;}
+:root{
+  --bg:#12100e;
+  --bg-2:#1a1714;
+  --card:#221d19;
+  --card-2:#2b2521;
+  --line:#3a322c;
+  --ink:#f4ece4;
+  --ink-2:#c3b5a8;
+  --ink-3:#8a7c70;
+  --ember:#ff7a2f;
+  --ember-2:#ffb03a;
+  --coal:#e8492f;
+  --mint:#5ad1a5;
+  --radius:16px;
+  --shadow:0 10px 30px rgba(0,0,0,.35);
+  --font:"Pretendard","Apple SD Gothic Neo","Noto Sans KR","Hiragino Sans",
+         "Yu Gothic",Meiryo,"Malgun Gothic",system-ui,-apple-system,sans-serif;
+}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);
+  line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;}
+
+/* ===================== 레이아웃 ===================== */
+.wrap{width:min(1080px,92vw);margin-inline:auto;}
+section{padding:76px 0;position:relative;}
+section + section{border-top:1px solid rgba(255,255,255,.05);}
+
+.sec-head{margin-bottom:34px;}
+.sec-kicker{
+  font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--ember);font-weight:700;margin-bottom:8px;
+}
+.sec-title{font-size:clamp(24px,4.2vw,34px);font-weight:800;margin:0 0 6px;letter-spacing:-.02em;}
+.sec-desc{color:var(--ink-2);margin:0;font-size:15px;}
+
+/* ===================== 네비 ===================== */
+nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(18,16,14,.82);backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.nav-in{display:flex;align-items:center;gap:18px;height:58px;}
+.nav-logo{font-weight:800;font-size:16px;white-space:nowrap;}
+.nav-logo span{color:var(--ember);}
+.nav-links{display:flex;gap:4px;margin-left:auto;overflow-x:auto;scrollbar-width:none;}
+.nav-links::-webkit-scrollbar{display:none;}
+.nav-links a{
+  padding:7px 12px;border-radius:999px;font-size:13.5px;font-weight:600;
+  color:var(--ink-2);text-decoration:none;white-space:nowrap;transition:.2s;
+}
+.nav-links a:hover{color:var(--ink);background:rgba(255,255,255,.07);}
+
+/* ===================== 히어로 ===================== */
+.hero{
+  padding:84px 0 88px;text-align:center;position:relative;overflow:hidden;
+  background:
+    radial-gradient(800px 420px at 50% -8%,rgba(255,122,47,.28),transparent 65%),
+    radial-gradient(600px 400px at 88% 20%,rgba(232,73,47,.16),transparent 60%),
+    var(--bg);
+  border-top:none;
+}
+.hero::after{
+  content:"";position:absolute;inset:auto 0 0 0;height:120px;
+  background:linear-gradient(to top,var(--bg),transparent);pointer-events:none;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:7px;padding:6px 14px;border-radius:999px;
+  background:rgba(255,122,47,.13);border:1px solid rgba(255,122,47,.35);
+  color:var(--ember-2);font-size:12.5px;font-weight:700;letter-spacing:.04em;margin-bottom:20px;
+}
+.hero h1{
+  margin:0 0 4px;font-size:clamp(40px,10vw,80px);font-weight:900;letter-spacing:-.035em;
+  background:linear-gradient(160deg,#fff 15%,var(--ember-2) 60%,var(--coal) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.05;
+}
+.hero-sub{color:var(--ink-3);font-size:14px;letter-spacing:.3em;margin:0 0 18px;}
+.hero-title{font-size:clamp(17px,3.4vw,22px);font-weight:700;margin:0 0 10px;}
+.hero-tag{color:var(--ink-2);font-size:15px;margin:0 0 30px;}
+
+.hero-meta{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:34px;}
+.chip{
+  display:inline-flex;align-items:center;gap:7px;padding:9px 15px;border-radius:12px;
+  background:var(--card);border:1px solid var(--line);font-size:14px;font-weight:600;
+}
+.chip b{color:var(--ember-2);font-weight:700;}
+
+/* D-day */
+.dday{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;}
+.dbox{
+  min-width:80px;padding:14px 10px;border-radius:14px;
+  background:linear-gradient(180deg,var(--card-2),var(--card));
+  border:1px solid var(--line);box-shadow:var(--shadow);
+}
+.dbox .num{font-size:28px;font-weight:900;color:var(--ember-2);line-height:1;font-variant-numeric:tabular-nums;}
+.dbox .lab{font-size:11px;color:var(--ink-3);letter-spacing:.14em;margin-top:6px;font-weight:700;}
+.dday-msg{margin-top:16px;color:var(--ink-2);font-size:14px;}
+
+/* ===================== 타임테이블 ===================== */
+.tabs{display:flex;gap:8px;margin-bottom:24px;}
+.tab{
+  flex:1;max-width:180px;padding:12px 14px;border-radius:12px;cursor:pointer;
+  background:var(--card);border:1px solid var(--line);color:var(--ink-2);
+  font-weight:700;font-size:14px;text-align:center;transition:.2s;font-family:inherit;
+}
+.tab .d{display:block;font-size:11.5px;font-weight:600;color:var(--ink-3);margin-top:2px;}
+.tab[aria-selected="true"]{
+  background:linear-gradient(140deg,rgba(255,122,47,.22),rgba(232,73,47,.12));
+  border-color:rgba(255,122,47,.5);color:var(--ink);
+}
+.tab[aria-selected="true"] .d{color:var(--ember-2);}
+
+.timeline{position:relative;padding-left:22px;}
+.timeline::before{
+  content:"";position:absolute;left:5px;top:6px;bottom:6px;width:2px;
+  background:linear-gradient(180deg,var(--ember),rgba(255,122,47,.15));border-radius:2px;
+}
+.tl-item{position:relative;padding:0 0 18px 14px;}
+.tl-item::before{
+  content:"";position:absolute;left:-22px;top:16px;width:12px;height:12px;border-radius:50%;
+  background:var(--ember);border:3px solid var(--bg);box-shadow:0 0 0 2px rgba(255,122,47,.28);
+}
+.tl-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:16px 18px;transition:.22s;
+}
+.tl-card:hover{border-color:rgba(255,122,47,.45);transform:translateX(3px);}
+.tl-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:5px;}
+.tl-time{
+  font-size:13px;font-weight:800;color:var(--ember-2);font-variant-numeric:tabular-nums;
+  background:rgba(255,122,47,.12);padding:3px 9px;border-radius:7px;
+}
+.tl-title{font-weight:700;font-size:16px;}
+.tl-tag{
+  margin-left:auto;font-size:11px;font-weight:700;color:var(--ink-3);
+  border:1px solid var(--line);padding:2px 9px;border-radius:999px;
+}
+.tl-desc{color:var(--ink-2);font-size:14px;margin:0;}
+
+/* ===================== 카드 그리드 ===================== */
+.grid{display:grid;gap:14px;}
+.g2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
+.g3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));}
+
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px;transition:.22s;
+}
+.card:hover{border-color:rgba(255,122,47,.4);background:var(--card-2);transform:translateY(-3px);}
+.card h3{margin:0 0 6px;font-size:16.5px;font-weight:700;}
+.card p{margin:0;color:var(--ink-2);font-size:14px;}
+.card .emoji{font-size:26px;display:block;margin-bottom:10px;}
+
+/* 멤버 */
+.member{display:flex;align-items:center;gap:14px;}
+.member .av{
+  width:52px;height:52px;flex:0 0 52px;border-radius:14px;display:grid;place-items:center;
+  font-size:24px;background:linear-gradient(140deg,rgba(255,122,47,.25),rgba(232,73,47,.12));
+  border:1px solid rgba(255,122,47,.3);
+}
+.member .nm{font-weight:800;font-size:16px;}
+.member .rl{font-size:11.5px;font-weight:700;color:var(--ember-2);letter-spacing:.06em;}
+.member .dt{font-size:13.5px;color:var(--ink-2);margin-top:2px;}
+
+/* 오시는 길 */
+.route ol{margin:12px 0 0;padding-left:18px;color:var(--ink-2);font-size:14px;}
+.route ol li{margin-bottom:5px;}
+.route .cost{
+  margin-top:12px;font-size:13px;font-weight:700;color:var(--mint);
+  background:rgba(90,209,165,.1);border-radius:8px;padding:6px 11px;display:inline-block;
+}
+.map-btn{
+  display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:12px 20px;
+  border-radius:12px;background:linear-gradient(135deg,var(--ember),var(--coal));
+  color:#fff;font-weight:700;text-decoration:none;font-size:14.5px;box-shadow:var(--shadow);
+  transition:.2s;
+}
+.map-btn:hover{transform:translateY(-2px);filter:brightness(1.08);}
+
+/* 먹거리 */
+.food{display:flex;gap:14px;align-items:flex-start;}
+.food .emoji{font-size:30px;margin:0;line-height:1;}
+.food .when{
+  font-size:11px;font-weight:700;color:var(--ember-2);letter-spacing:.06em;
+  display:block;margin-top:7px;
+}
+
+/* 체크리스트 */
+.check{
+  display:flex;align-items:center;gap:11px;padding:11px 14px;border-radius:11px;
+  background:var(--card);border:1px solid var(--line);cursor:pointer;
+  font-size:14.5px;user-select:none;transition:.18s;
+}
+.check:hover{border-color:rgba(255,122,47,.4);}
+.check .box{
+  width:20px;height:20px;flex:0 0 20px;border-radius:6px;border:2px solid var(--ink-3);
+  display:grid;place-items:center;font-size:12px;color:transparent;transition:.18s;
+}
+.check.on{background:rgba(90,209,165,.08);border-color:rgba(90,209,165,.35);}
+.check.on .box{background:var(--mint);border-color:var(--mint);color:#12100e;}
+.check.on .txt{color:var(--ink-3);text-decoration:line-through;}
+.check-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:9px;}
+.check-lab{font-size:13px;font-weight:800;color:var(--ember);letter-spacing:.08em;margin:22px 0 10px;}
+.check-lab:first-of-type{margin-top:0;}
+.progress{height:6px;border-radius:99px;background:var(--card-2);overflow:hidden;margin-top:20px;}
+.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--mint),var(--ember-2));transition:width .3s;}
+.progress-txt{font-size:12.5px;color:var(--ink-3);margin-top:8px;text-align:right;}
+
+/* 공지 */
+.notice{
+  display:flex;gap:12px;padding:14px 16px;border-radius:12px;
+  background:rgba(232,73,47,.07);border:1px solid rgba(232,73,47,.22);
+  font-size:14.5px;color:var(--ink);margin-bottom:9px;
+}
+.notice .n{
+  flex:0 0 22px;height:22px;border-radius:7px;background:rgba(232,73,47,.3);
+  display:grid;place-items:center;font-size:11.5px;font-weight:800;color:#ffd9cf;
+}
+
+/* 예산 */
+.budget{width:100%;border-collapse:collapse;font-size:14.5px;}
+.budget th,.budget td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line);}
+.budget th{font-size:12px;letter-spacing:.1em;color:var(--ink-3);font-weight:700;}
+.budget td:last-child,.budget th:last-child{text-align:right;font-variant-numeric:tabular-nums;}
+.budget tfoot td{font-weight:800;color:var(--ember-2);border-bottom:none;font-size:15.5px;}
+.budget tbody tr:hover{background:rgba(255,255,255,.025);}
+
+/* QR */
+.qr-box{
+  display:flex;gap:26px;align-items:center;flex-wrap:wrap;justify-content:center;
+  text-align:center;padding:30px;border-radius:var(--radius);
+  background:linear-gradient(140deg,var(--card-2),var(--card));border:1px solid var(--line);
+}
+.qr-img{
+  width:190px;height:190px;border-radius:14px;background:#fff;padding:10px;
+  display:grid;place-items:center;flex:0 0 auto;
+}
+.qr-ph{
+  width:190px;height:190px;border-radius:14px;flex:0 0 auto;
+  border:2px dashed var(--line);display:grid;place-items:center;
+  color:var(--ink-3);font-size:13px;line-height:1.7;padding:14px;
+}
+.qr-txt{text-align:left;max-width:340px;}
+.qr-txt h3{margin:0 0 8px;font-size:18px;}
+.qr-txt p{margin:0 0 12px;color:var(--ink-2);font-size:14px;}
+.qr-link{
+  display:inline-block;font-size:13.5px;font-weight:700;color:var(--ember-2);
+  background:rgba(255,122,47,.12);padding:8px 14px;border-radius:10px;
+  word-break:break-all;text-decoration:none;
+}
+
+/* 푸터 */
+footer{
+  padding:40px 0 56px;text-align:center;color:var(--ink-3);font-size:13px;
+  border-top:1px solid rgba(255,255,255,.06);
+}
+footer b{color:var(--ember);}
+
+/* 등장 애니메이션 */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease;}
+.reveal.in{opacity:1;transform:none;}
+
+@media (max-width:640px){
+  section{padding:56px 0;}
+  .nav-logo{font-size:14.5px;}
+  .qr-txt{text-align:center;}
+  .tabs .tab{font-size:13px;}
+}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none;}
+  html{scroll-behavior:auto;}
+}
+</style>
+</head>
+<body>
+
+<!-- Apps Script 템플릿에서 설정값 주입 -->
+<script>
+  var CFG = <?!= JSON.stringify(cfg) ?>;
+</script>
+
+<nav>
+  <div class="wrap nav-in">
+    <div class="nav-logo" id="navLogo">焼き <span>Family</span></div>
+    <div class="nav-links">
+      <a href="#schedule">일정</a>
+      <a href="#place">오시는 길</a>
+      <a href="#food">먹거리</a>
+      <a href="#game">레크리에이션</a>
+      <a href="#pack">준비물</a>
+      <a href="#team">팀원</a>
+      <a href="#qr">QR</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-badge">🔥 MEMBERSHIP TRAINING 2026</div>
+    <h1 id="heroTeam">焼き Family</h1>
+    <p class="hero-sub" id="heroSub">YAKI FAMILY</p>
+    <p class="hero-title" id="heroTitle"></p>
+    <p class="hero-tag" id="heroTag"></p>
+
+    <div class="hero-meta" id="heroMeta"></div>
+
+    <div class="dday" id="dday"></div>
+    <p class="dday-msg" id="ddayMsg"></p>
+  </div>
+</header>
+
+<main>
+
+  <!-- 일정 -->
+  <section id="schedule">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-kicker">Timetable</div>
+        <h2 class="sec-title">1박 2일 타임테이블</h2>
+        <p class="sec-desc">시간은 대략적인 기준입니다. 현장 분위기에 따라 유연하게 움직여요.</p>
+      </div>
+      <div class="tabs reveal" id="tabs"></div>
+      <div class="timeline reveal" id="timeline"></div>
+    </div>
+  </section>
+
+  <!-- 오시는 길 -->
+  <section id="place">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-kicker">Location</div>
+        <h2 class="sec-title">장소 안내 &amp; 오시는 길</h2>
+        <p class="sec-desc" id="placeDesc"></p>
+      </div>
+      <div class="grid g3 reveal" id="routes"></div>
+      <a class="map-btn reveal" id="mapBtn" target="_blank" rel="noopener">🗺️ 지도에서 위치 보기</a>
+    </div>
+  </section>
+
+  <!-- 먹거리 -->
+  <section id="food">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-kicker">Food</div>
+        <h2 class="sec-title">먹거리 라인업</h2>
+        <p class="sec-desc">팀 이름값 하는 바베큐 중심 식단. 알러지 있으면 미리 알려주세요.</p>
+      </div>
+      <div class="grid g3 reveal" id="foods"></div>
+    </div>
+  </section>
+
+  <!-- 레크리에이션 -->
+  <section id="game">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-kicker">Recreation</div>
+        <h2 class="sec-title">레크리에이션 프로그램</h2>
+        <p class="sec-desc">4인 기준으로 굴러가는 게임들만 골랐습니다.</p>
+      </div>
+      <div class="grid g2 reveal" id="games"></div>
+    </div>
+  </section>
+
+  <!-- 준비물 -->
+  <section id="pack">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-kicker">Checklist</div>
+        <h2 class="sec-title">준비물 체크리스트</h2>
+        <p class="sec-desc">항목을 눌러 체크하세요. (이 페이지를 새로고침하면 초기화됩니다)</p>
+      </div>
+      <div class="reveal" id="packing"></div>
+      <div class="progress reveal"><i id="progBar"></i></div>
+      <p class="progress-txt" id="progTxt"></p>
+    </div>
+  </section>
+
+  <!-- 공지 + 예산 -->
+  <section id="notice">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-kicker">Notice</div>
+        <h2 class="sec-title">공지사항 &amp; 회비</h2>
+        <p class="sec-desc">즐겁게 놀되, 안전이 최우선입니다.</p>
+      </div>
+      <div class="reveal" id="notices" style="margin-bottom:34px"></div>
+      <div class="card reveal" style="padding:8px 6px">
+        <table class="budget">
+          <thead><tr><th>항목</th><th>금액</th></tr></thead>
+          <tbody id="budgetBody"></tbody>
+          <tfoot id="budgetFoot"></tfoot>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 팀원 -->
+  <section id="team">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-kicker">Members</div>
+        <h2 class="sec-title">우리 팀 &amp; 역할 분담</h2>
+        <p class="sec-desc">각자 맡은 몫만 해주면 MT는 성공합니다.</p>
+      </div>
+      <div class="grid g2 reveal" id="members"></div>
+    </div>
+  </section>
+
+  <!-- QR -->
+  <section id="qr">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-kicker">Share</div>
+        <h2 class="sec-title">QR 코드로 공유하기</h2>
+        <p class="sec-desc">이 페이지 주소를 QR로 만들어 팀원들에게 뿌리세요.</p>
+      </div>
+      <div class="qr-box reveal" id="qrBox"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p style="margin:0 0 6px">🔥 <b id="footTeam">焼き Family</b> · Membership Training</p>
+  <p style="margin:0" id="footMeta"></p>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ---------- 유틸 ---------- */
+  function el(tag, cls, html){
+    var n = document.createElement(tag);
+    if(cls) n.className = cls;
+    if(html !== undefined) n.innerHTML = html;
+    return n;
+  }
+  function esc(s){
+    return String(s == null ? '' : s)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+  function won(n){ return n.toLocaleString('ko-KR') + '원'; }
+  function $(id){ return document.getElementById(id); }
+
+  /* ---------- 헤더 ---------- */
+  $('navLogo').innerHTML = esc(CFG.team.replace(' Family','')) + ' <span>Family</span>';
+  $('heroTeam').textContent = CFG.team;
+  $('heroSub').textContent  = CFG.teamSub;
+  $('heroTitle').textContent = CFG.title;
+  $('heroTag').textContent   = '“' + CFG.tagline + '”';
+  $('footTeam').textContent  = CFG.team;
+  $('footMeta').textContent  = CFG.dateLabel + ' · ' + CFG.placeDetail;
+
+  $('heroMeta').innerHTML = [
+    ['📅', CFG.dateLabel],
+    ['📍', CFG.placeDetail],
+    ['👥', CFG.headcount + '명'],
+    ['💰', CFG.fee]
+  ].map(function(m){
+    return '<div class="chip">' + m[0] + ' <b>' + esc(m[1]) + '</b></div>';
+  }).join('');
+
+  /* ---------- D-day ---------- */
+  var target = new Date(CFG.startDate).getTime();
+  var UNITS = [['일','d'],['시간','h'],['분','m'],['초','s']];
+  $('dday').innerHTML = UNITS.map(function(u){
+    return '<div class="dbox"><div class="num" data-u="' + u[1] + '">--</div>' +
+           '<div class="lab">' + u[0] + '</div></div>';
+  }).join('');
+
+  function tick(){
+    var diff = target - Date.now();
+    if(diff <= 0){
+      $('dday').innerHTML = '<div class="dbox" style="min-width:200px">' +
+        '<div class="num">D-DAY</div><div class="lab">지금 우리는 MT 중</div></div>';
+      $('ddayMsg').textContent = '🔥 焼き Family, 출동!';
+      clearInterval(timer);
+      return;
+    }
+    var s = Math.floor(diff/1000);
+    var v = { d: Math.floor(s/86400), h: Math.floor(s%86400/3600),
+              m: Math.floor(s%3600/60), s: s%60 };
+    Object.keys(v).forEach(function(k){
+      var n = document.querySelector('[data-u="' + k + '"]');
+      if(n) n.textContent = k === 'd' ? v[k] : String(v[k]).padStart(2,'0');
+    });
+    $('ddayMsg').textContent = 'MT까지 ' + v.d + '일 남았습니다. 마음의 준비 되셨나요?';
+  }
+  tick();
+  var timer = setInterval(tick, 1000);
+
+  /* ---------- 타임테이블 ---------- */
+  var tabsBox = $('tabs'), tlBox = $('timeline');
+  CFG.schedule.forEach(function(day, i){
+    var b = el('button','tab', esc(day.day) + '<span class="d">' + esc(day.date) + '</span>');
+    b.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+    b.onclick = function(){ renderDay(i); };
+    tabsBox.appendChild(b);
+  });
+  function renderDay(idx){
+    Array.prototype.forEach.call(tabsBox.children, function(t,i){
+      t.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+    });
+    tlBox.innerHTML = CFG.schedule[idx].items.map(function(it){
+      return '<div class="tl-item"><div class="tl-card">' +
+        '<div class="tl-top">' +
+          '<span class="tl-time">' + esc(it.time) + '</span>' +
+          '<span class="tl-title">' + esc(it.title) + '</span>' +
+          '<span class="tl-tag">' + esc(it.tag) + '</span>' +
+        '</div><p class="tl-desc">' + esc(it.desc) + '</p>' +
+      '</div></div>';
+    }).join('');
+  }
+  renderDay(0);
+
+  /* ---------- 오시는 길 ---------- */
+  $('placeDesc').textContent = CFG.placeDetail + ' (' + CFG.place + ')';
+  $('routes').innerHTML = CFG.routes.map(function(r){
+    return '<div class="card route"><span class="emoji">' + r.icon + '</span>' +
+      '<h3>' + esc(r.name) + '</h3><ol>' +
+      r.steps.map(function(s){ return '<li>' + esc(s) + '</li>'; }).join('') +
+      '</ol><div class="cost">' + esc(r.cost) + '</div></div>';
+  }).join('');
+  $('mapBtn').href = 'https://map.naver.com/v5/search/' + encodeURIComponent(CFG.mapQuery);
+
+  /* ---------- 먹거리 ---------- */
+  $('foods').innerHTML = CFG.foods.map(function(f){
+    return '<div class="card food"><span class="emoji">' + f.emoji + '</span><div>' +
+      '<h3>' + esc(f.name) + '</h3><p>' + esc(f.desc) + '</p>' +
+      '<span class="when">' + esc(f.when) + '</span></div></div>';
+  }).join('');
+
+  /* ---------- 레크리에이션 ---------- */
+  $('games').innerHTML = CFG.games.map(function(g){
+    return '<div class="card"><span class="emoji">' + g.emoji + '</span>' +
+      '<h3>' + esc(g.name) + '</h3><p>' + esc(g.rule) + '</p></div>';
+  }).join('');
+
+  /* ---------- 준비물 ---------- */
+  var groups = [['개인 준비물', CFG.packing.personal], ['공동 준비물', CFG.packing.team]];
+  var packBox = $('packing'), total = 0;
+  groups.forEach(function(g){
+    packBox.appendChild(el('div','check-lab', esc(g[0])));
+    var grid = el('div','check-grid');
+    g[1].forEach(function(item){
+      total++;
+      var c = el('div','check',
+        '<span class="box">✓</span><span class="txt">' + esc(item) + '</span>');
+      c.onclick = function(){ c.classList.toggle('on'); updateProg(); };
+      grid.appendChild(c);
+    });
+    packBox.appendChild(grid);
+  });
+  function updateProg(){
+    var done = packBox.querySelectorAll('.check.on').length;
+    $('progBar').style.width = (done/total*100) + '%';
+    $('progTxt').textContent = done + ' / ' + total + ' 준비 완료' +
+      (done === total ? ' — 완벽합니다! 🎉' : '');
+  }
+  updateProg();
+
+  /* ---------- 공지 ---------- */
+  $('notices').innerHTML = CFG.notices.map(function(n,i){
+    return '<div class="notice"><span class="n">' + (i+1) + '</span><span>' + esc(n) + '</span></div>';
+  }).join('');
+
+  /* ---------- 예산 ---------- */
+  var sum = CFG.budget.reduce(function(a,b){ return a + b.amount; }, 0);
+  $('budgetBody').innerHTML = CFG.budget.map(function(b){
+    return '<tr><td>' + esc(b.item) + '</td><td>' + won(b.amount) + '</td></tr>';
+  }).join('');
+  $('budgetFoot').innerHTML =
+    '<tr><td>총합 · 1인당 ' + won(Math.round(sum/CFG.headcount/1000)*1000) + '</td>' +
+    '<td>' + won(sum) + '</td></tr>';
+
+  /* ---------- 팀원 ---------- */
+  $('members').innerHTML = CFG.members.map(function(m){
+    return '<div class="card member"><div class="av">' + m.emoji + '</div><div>' +
+      '<div class="rl">' + esc(m.role) + '</div>' +
+      '<div class="nm">' + esc(m.name) + '</div>' +
+      '<div class="dt">' + esc(m.duty) + '</div></div></div>';
+  }).join('');
+
+  /* ---------- QR ---------- */
+  var qrVisual = CFG.qrImageUrl
+    ? '<div class="qr-img"><img src="' + esc(CFG.qrImageUrl) + '" alt="MT 안내 페이지 QR 코드"></div>'
+    : '<div class="qr-ph">QR 이미지<br>준비 중<br><small>Code.gs의 qrImageUrl에<br>이미지 주소를 넣으세요</small></div>';
+  var linkHtml = CFG.shortUrl
+    ? '<a class="qr-link" href="' + esc(CFG.shortUrl) + '" target="_blank" rel="noopener">' + esc(CFG.shortUrl) + '</a>'
+    : '<span class="qr-link">단축 URL 등록 예정</span>';
+  $('qrBox').innerHTML = qrVisual +
+    '<div class="qr-txt"><h3>휴대폰으로 바로 열기</h3>' +
+    '<p>카메라로 QR을 비추면 이 안내 페이지가 열립니다. 단톡방에 이미지로 공유해도 좋아요.</p>' +
+    linkHtml + '</div>';
+
+  /* ---------- 스크롤 등장 ---------- */
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function(n){ io.observe(n); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(n){ n.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>
