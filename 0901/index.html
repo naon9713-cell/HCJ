@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<base target="_top">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>스터디 시간 조율</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-tertiary-fixed": "#141d1b",
+          "primary": "#006d3b",
+          "background": "#f9f9fc",
+          "error": "#ba1a1a",
+          "tertiary-container": "#a0aaa6",
+          "outline": "#6d7b6e",
+          "on-error": "#ffffff",
+          "on-secondary-fixed-variant": "#005231",
+          "surface-container-low": "#f3f3f6",
+          "on-surface-variant": "#3d4a3f",
+          "primary-container": "#2fbf71",
+          "primary-fixed": "#75fca7",
+          "secondary-fixed-dim": "#77daa2",
+          "surface-bright": "#f9f9fc",
+          "inverse-primary": "#57df8d",
+          "on-secondary-container": "#007347",
+          "on-secondary-fixed": "#002111",
+          "on-error-container": "#93000a",
+          "surface-tint": "#006d3b",
+          "on-primary-fixed": "#00210e",
+          "tertiary-fixed": "#dbe5e0",
+          "on-background": "#1a1c1e",
+          "surface-container-high": "#e8e8ea",
+          "surface-container": "#eeeef0",
+          "on-tertiary-container": "#363f3c",
+          "surface-variant": "#e2e2e5",
+          "surface-container-lowest": "#ffffff",
+          "inverse-on-surface": "#f0f0f3",
+          "inverse-surface": "#2f3133",
+          "secondary": "#006d43",
+          "secondary-fixed": "#93f7bc",
+          "on-primary-fixed-variant": "#00522b",
+          "on-primary-container": "#004724",
+          "on-surface": "#1a1c1e",
+          "outline-variant": "#bccabc",
+          "error-container": "#ffdad6",
+          "on-tertiary": "#ffffff",
+          "on-primary": "#ffffff",
+          "on-secondary": "#ffffff",
+          "secondary-container": "#93f7bc",
+          "tertiary-fixed-dim": "#bfc9c4",
+          "tertiary": "#57605d",
+          "on-tertiary-fixed-variant": "#3f4945",
+          "surface-dim": "#dadadc",
+          "surface-container-highest": "#e2e2e5",
+          "primary-fixed-dim": "#57df8d",
+          "surface": "#f9f9fc"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "md": "16px",
+          "gutter-mobile": "12px",
+          "lg": "24px",
+          "sm": "12px",
+          "base": "4px",
+          "xl": "32px",
+          "margin-mobile": "20px",
+          "xs": "8px"
+        },
+        "fontFamily": {
+          "headline-lg": ["Hanken Grotesk"],
+          "label-caps": ["Hanken Grotesk"],
+          "headline-sm": ["Hanken Grotesk"],
+          "body-lg": ["Hanken Grotesk"],
+          "body-md": ["Hanken Grotesk"],
+          "label-sm": ["Hanken Grotesk"],
+          "headline-md": ["Hanken Grotesk"]
+        },
+        "fontSize": {
+          "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+          "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+          "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+          "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+          "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+          "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+          "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+        }
+      }
+    }
+  }
+</script>
+<style>
+  body{ font-family:'Hanken Grotesk', sans-serif; }
+  .material-symbols-outlined{ font-variation-settings:'FILL' 1; }
+  .no-scrollbar::-webkit-scrollbar{ display:none; }
+  .no-scrollbar{ -ms-overflow-style:none; scrollbar-width:none; }
+  .grid-cell{ cursor:pointer; }
+  .grid-cell.selected{
+    background-color:#2FBF71 !important;
+    border-color:#2FBF71 !important;
+    color:#fff;
+  }
+  .hidden{ display:none !important; }
+  @keyframes fadeIn{ from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
+  @keyframes bounceIn{
+    0%{opacity:0; transform:scale(.3);}
+    50%{opacity:1; transform:scale(1.05);}
+    70%{transform:scale(.9);}
+    100%{transform:scale(1);}
+  }
+  #doneView main{ animation: fadeIn .5s ease-out; }
+  #doneView .success-icon{ animation: bounceIn .6s cubic-bezier(.175,.885,.32,1.275); }
+</style>
+</head>
+<body class="bg-background text-on-surface antialiased pb-10">
+
+<header class="bg-surface flex justify-center items-center w-full px-margin-mobile h-14 sticky top-0 z-40 border-b border-surface-variant">
+  <h1 class="font-headline-sm text-headline-sm font-bold text-on-surface truncate">스터디 시간 조율</h1>
+</header>
+
+<main class="px-margin-mobile pt-sm pb-xl max-w-2xl mx-auto">
+
+  <!-- ===== 입력 화면 ===== -->
+  <div id="formView">
+    <section class="space-y-sm">
+      <div class="inline-flex items-center justify-center px-3 py-1 rounded-full bg-[#F0FAF5] text-primary-container font-label-caps text-label-caps uppercase">
+        <?= currentRound ?>
+      </div>
+      <p class="font-body-md text-body-md text-on-surface-variant">
+        본인의 정보를 입력하고 가능한 시간을 선택해 주세요. 같은 회차에는 학번당 1회만 제출할 수 있습니다.
+      </p>
+    </section>
+
+    <div id="alertBox" class="hidden mt-md flex items-center gap-2 bg-error-container text-on-error-container border border-error/30 rounded-lg p-3 font-body-md text-body-md">
+      <span class="material-symbols-outlined text-[18px]">error</span>
+      <span id="alertText"></span>
+    </div>
+
+    <form class="space-y-lg mt-lg" onsubmit="return false;">
+
+      <div class="space-y-base">
+        <label class="block font-label-sm text-label-sm text-on-surface" for="studentId">학번 <span class="text-error">*</span></label>
+        <input class="w-full h-14 px-md bg-surface-container-lowest border border-[#E1E4E8] rounded-lg focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none transition-colors font-body-lg text-body-lg text-on-surface" id="studentId" inputmode="numeric" autocomplete="off" placeholder="예) 20251234" type="text"/>
+        <p id="idHint" class="font-label-sm text-label-sm flex items-center gap-1 min-h-[16px]"></p>
+      </div>
+
+      <div class="space-y-base">
+        <label class="block font-label-sm text-label-sm text-on-surface" for="name">이름 <span class="text-error">*</span></label>
+        <input class="w-full h-14 px-md bg-surface-container-lowest border border-[#E1E4E8] rounded-lg focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none transition-colors font-body-lg text-body-lg text-on-surface placeholder:text-on-surface-variant/50" id="name" autocomplete="name" placeholder="홍길동" type="text"/>
+      </div>
+
+      <div class="space-y-sm">
+        <label class="block font-label-sm text-label-sm text-on-surface">가능한 시간대 <span class="text-error">*</span></label>
+        <div class="relative bg-surface-container-lowest rounded-xl border border-surface-variant overflow-hidden shadow-[0px_4px_12px_rgba(0,0,0,0.02)]">
+          <div class="overflow-x-auto no-scrollbar">
+            <table class="w-full min-w-[560px] border-collapse" id="timeGrid"></table>
+          </div>
+        </div>
+        <p class="font-label-sm text-label-sm text-on-surface-variant text-right">가로로 스크롤하여 더 많은 요일을 확인하세요.</p>
+      </div>
+
+      <div class="space-y-base">
+        <label class="block font-label-sm text-label-sm text-on-surface" for="clubActivity">동아리 활동 내용 <span class="text-error">*</span></label>
+        <textarea class="w-full p-md bg-surface-container-lowest border border-[#E1E4E8] rounded-lg focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none transition-colors font-body-lg text-body-lg text-on-surface resize-none placeholder:text-on-surface-variant/50" id="clubActivity" placeholder="최근 동아리 활동 내용을 적어 주세요." rows="3"></textarea>
+      </div>
+
+      <div class="space-y-base">
+        <label class="block font-label-sm text-label-sm text-on-surface" for="note">비고 <span class="text-on-surface-variant font-normal">(선택)</span></label>
+        <textarea class="w-full p-md bg-surface-container-lowest border border-[#E1E4E8] rounded-lg focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none transition-colors font-body-lg text-body-lg text-on-surface resize-none placeholder:text-on-surface-variant/50" id="note" placeholder="예) 화요일은 저녁 8시 이후만 가능해요" rows="2"></textarea>
+      </div>
+
+      <button class="w-full h-[56px] bg-primary-container text-on-primary font-headline-sm text-headline-sm rounded-xl hover:brightness-95 active:brightness-90 transition-all shadow-sm disabled:opacity-60 disabled:cursor-not-allowed" id="submitBtn" type="button" onclick="handleSubmit()">
+        확인
+      </button>
+    </form>
+
+    <section class="mt-xl p-md bg-surface-container-low border border-dashed border-outline-variant rounded-xl flex flex-col sm:flex-row items-center gap-md">
+      <div class="w-20 h-20 bg-surface-container-lowest rounded-lg border border-surface-variant flex-shrink-0 flex items-center justify-center p-1">
+        <img class="w-full h-full object-contain"
+             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASIAAAEiAQMAAABncE31AAAABlBMVEX///8AAABVwtN+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABU0lEQVRoge2YSw6DMAxELXEAjsTVc6QeAMmNf4mpaFcxm84sCIkfK8vjYCII+kvt7Gq0cd+eRMeLKE5PUIWUr53yGB09ptsZBVVEaSK4Sa7arm95C+oBqlcHsxQGqOcpLxFzJlCPUCrvCpqmn/4Fah3FrmxK5/e+DWodNWXlIB359RkCVUJFTLPRu8ImtyE5ozAqUFWU+ZHySsVbizNQZVTEZlfQY08YgyqkRGpF/ti8WNoIgKqkRFEY7M7kHnWCKqVi4MOjIWx5CASqipJ1jnksJXEluvgXqOWUZYPChXb+nHuCKqNiY7E5dBDREKgKKvHaC+JLN6rbv19Qa6g0eYjCOGLwDKqY8tUmm8c1QzN7oGoo5pGSAZgz5QyBKqTIBz5hSsxpNgSqlAorygOf/TaPoJZRqhjwa1mMj/JNFNRyyl3IgfHfZUOg+74Nag0FQX+nN26POOYXe3KEAAAAAElFTkSuQmCC"
+             alt="설문 공유 QR코드"/>
+      </div>
+      <div class="flex-1 text-center sm:text-left">
+        <h3 class="font-headline-sm text-headline-sm text-on-surface mb-xs">팀원에게 이 설문 공유하기</h3>
+        <div class="inline-flex items-center gap-xs bg-surface-container-lowest border border-surface-variant px-3 py-2 rounded-lg w-full sm:w-auto overflow-hidden">
+          <span class="material-symbols-outlined text-on-surface-variant text-[18px]">link</span>
+          <a id="shareLink" href="https://url.kr/iyptou" target="_blank" rel="noopener" class="font-body-md text-body-md text-on-surface truncate flex-1 select-all">https://url.kr/iyptou</a>
+          <button type="button" aria-label="Copy link" class="text-primary-container hover:text-primary transition-colors ml-2 flex items-center" onclick="copyShareLink()">
+            <span class="material-symbols-outlined text-[20px]" id="copyIcon">content_copy</span>
+          </button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ===== 완료 화면 ===== -->
+  <div id="doneView" class="hidden">
+    <main class="w-full max-w-md mx-auto bg-surface-container-lowest rounded-xl shadow-[0px_8px_24px_rgba(0,0,0,0.1)] p-xl flex flex-col items-center justify-center text-center mt-xl">
+      <div class="success-icon w-24 h-24 bg-primary-container rounded-full flex items-center justify-center mb-lg shadow-[0px_4px_12px_rgba(0,0,0,0.05)]">
+        <span class="material-symbols-outlined text-[48px] text-on-primary font-bold">check</span>
+      </div>
+      <h1 id="doneMsg" class="font-headline-lg text-headline-lg text-on-surface mb-sm">참여해 주셔서 감사합니다!</h1>
+      <p class="font-body-md text-body-md text-on-surface-variant">제출이 정상적으로 완료되었습니다. 창을 닫으셔도 됩니다.</p>
+    </main>
+  </div>
+
+</main>
+
+<script>
+  // ▼ 요일/시간대 구성을 바꾸고 싶으면 이 배열만 수정하면 됩니다 ▼
+  var DAYS = ['월', '화', '수', '목', '금', '토', '일'];
+  var WEEKEND_DAYS = ['토', '일'];
+  var TIME_BLOCKS = ['09:00~12:00', '12:00~15:00', '15:00~18:00', '18:00~21:00', '21:00~24:00'];
+
+  function buildGrid() {
+    var table = document.getElementById('timeGrid');
+
+    var thead = document.createElement('thead');
+    var headRow = document.createElement('tr');
+    headRow.className = 'border-b border-surface-variant bg-surface-container-low/50';
+    var cornerTh = document.createElement('th');
+    cornerTh.className = 'p-2 w-20 font-label-caps text-label-caps text-on-surface-variant text-center border-r border-surface-variant';
+    cornerTh.textContent = '시간';
+    headRow.appendChild(cornerTh);
+    DAYS.forEach(function (d) {
+      var th = document.createElement('th');
+      var isWeekend = WEEKEND_DAYS.indexOf(d) !== -1;
+      th.className = 'p-2 min-w-[60px] font-label-caps text-label-caps text-center ' + (isWeekend ? 'text-error' : 'text-on-surface');
+      th.textContent = d;
+      headRow.appendChild(th);
+    });
+    thead.appendChild(headRow);
+    table.appendChild(thead);
+
+    var tbody = document.createElement('tbody');
+    TIME_BLOCKS.forEach(function (time) {
+      var tr = document.createElement('tr');
+      tr.className = 'border-b border-surface-variant last:border-b-0';
+
+      var timeTd = document.createElement('td');
+      timeTd.className = 'p-2 text-center font-label-caps text-[10px] text-on-surface-variant border-r border-surface-variant bg-surface-container-low/20 whitespace-pre-line';
+      timeTd.textContent = time.replace('~', '\n~ ');
+      tr.appendChild(timeTd);
+
+      DAYS.forEach(function (day, i) {
+        var td = document.createElement('td');
+        td.className = 'p-1 cursor-pointer' + (i < DAYS.length - 1 ? ' border-r border-surface-variant/50' : '');
+
+        var cell = document.createElement('div');
+        cell.className = 'grid-cell w-full h-12 rounded bg-surface-container-lowest border border-[#E1E4E8] flex items-center justify-center transition-colors hover:bg-surface-container-low';
+        cell.setAttribute('data-day', day);
+        cell.setAttribute('data-time', time);
+        cell.addEventListener('click', function () { toggleCell(cell); });
+
+        td.appendChild(cell);
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+  }
+  buildGrid();
+
+  function toggleCell(cell) {
+    cell.classList.toggle('selected');
+    if (cell.classList.contains('selected')) {
+      cell.innerHTML = '<span class="material-symbols-outlined text-[20px]">check</span>';
+    } else {
+      cell.innerHTML = '';
+    }
+  }
+
+  function getSelectedSlots() {
+    var cells = document.querySelectorAll('#timeGrid .grid-cell.selected');
+    var result = [];
+    cells.forEach(function (c) {
+      result.push(c.getAttribute('data-day') + ' ' + c.getAttribute('data-time'));
+    });
+    return result;
+  }
+
+  var checkTimer = null;
+  document.getElementById('studentId').addEventListener('input', function () {
+    var hint = document.getElementById('idHint');
+    hint.className = 'font-label-sm text-label-sm flex items-center gap-1 min-h-[16px]';
+    hint.innerHTML = '';
+    clearTimeout(checkTimer);
+    var val = this.value.trim();
+    if (val.length < 4) return;
+    checkTimer = setTimeout(function () {
+      google.script.run
+        .withSuccessHandler(function (res) {
+          if (res && res.duplicated) {
+            hint.className = 'font-label-sm text-label-sm flex items-center gap-1 min-h-[16px] text-error';
+            hint.innerHTML = '<span class="material-symbols-outlined text-[14px]">cancel</span> 이미 이번 회차에 제출한 학번입니다';
+          } else {
+            hint.className = 'font-label-sm text-label-sm flex items-center gap-1 min-h-[16px] text-[#1F8B5A]';
+            hint.innerHTML = '<span class="material-symbols-outlined text-[14px]">check_circle</span> 제출 가능한 학번입니다';
+          }
+        })
+        .withFailureHandler(function () {})
+        .checkStudentId(val);
+    }, 450);
+  });
+
+  function showAlert(msg) {
+    document.getElementById('alertText').textContent = msg;
+    document.getElementById('alertBox').classList.remove('hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function hideAlert() {
+    document.getElementById('alertBox').classList.add('hidden');
+  }
+
+  function copyShareLink() {
+    var link = document.getElementById('shareLink').textContent.trim();
+    var icon = document.getElementById('copyIcon');
+    var done = function () {
+      icon.textContent = 'check';
+      setTimeout(function () { icon.textContent = 'content_copy'; }, 1500);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(link).then(done).catch(function () {});
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = link;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); done(); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+  }
+
+  function handleSubmit() {
+    hideAlert();
+
+    var data = {
+      studentId: document.getElementById('studentId').value.trim(),
+      name: document.getElementById('name').value.trim(),
+      timeSlots: getSelectedSlots(),
+      note: document.getElementById('note').value.trim(),
+      clubActivity: document.getElementById('clubActivity').value.trim()
+    };
+
+    if (!data.studentId) { showAlert('학번을 입력해 주세요.'); return; }
+    if (!data.name)      { showAlert('이름을 입력해 주세요.'); return; }
+    if (data.timeSlots.length === 0) { showAlert('가능한 시간대를 1개 이상 선택해 주세요.'); return; }
+    if (!data.clubActivity) { showAlert('동아리 활동 내용을 입력해 주세요.'); return; }
+
+    var btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = '제출 중...';
+
+    google.script.run
+      .withSuccessHandler(function (res) {
+        if (res && res.ok) {
+          document.getElementById('doneMsg').textContent = res.message || '참여해 주셔서 감사합니다!';
+          document.getElementById('formView').classList.add('hidden');
+          document.getElementById('doneView').classList.remove('hidden');
+          window.scrollTo(0, 0);
+        } else {
+          showAlert((res && res.message) || '제출에 실패했습니다. 다시 시도해 주세요.');
+          btn.disabled = false;
+          btn.textContent = '확인';
+        }
+      })
+      .withFailureHandler(function (err) {
+        showAlert('서버 오류가 발생했습니다: ' + err.message);
+        btn.disabled = false;
+        btn.textContent = '확인';
+      })
+      .submitForm(data);
+  }
+</script>
+</body>
+</html>
