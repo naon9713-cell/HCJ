@@ -1,0 +1,1587 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TABI KOREA | 旅コリア - 韓国旅行のすべて・最新トレンド観光ガイド</title>
+  <meta name="description" content="日本人旅行者のための韓国観光総合ポータル。ソウルの最新トレンドスポット（聖水・漢南洞・明洞）から、インタラクティブ観光マップ、本場K-グルメ、指さし韓国語、WOWPASS活用法まで詳しくガイドします。">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            },
+            accent: {
+              500: '#e11d48',
+              600: '#be123c',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-slate-900 text-slate-200 text-xs py-2 px-4 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+      <div class="flex items-center space-x-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400"></span>
+        <span>【緊急・安心】韓国観光公社 1330 観光通訳案内（24時間・日本語対応・通話無料アプリ有）</span>
+      </div>
+      <div class="flex items-center space-x-4">
+        <a href="#currency" class="hover:text-white transition-colors underline decoration-slate-600 underline-offset-4">本日の為替目安 (10,000ウォン ≒ 約1,120円)</a>
+        <span class="text-slate-600">|</span>
+        <span class="text-slate-400">日本発の所要時間：約2時間30分</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header id="mainHeader" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo -->
+        <a href="#" class="flex items-center space-x-3 group">
+          <div class="w-10 h-10 rounded-xl bg-blue-900 flex items-center justify-center text-white font-bold font-en text-xl shadow-md group-hover:bg-blue-800 transition-colors">
+            TK
+          </div>
+          <div>
+            <div id="headerLogo" class="font-bold text-xl font-en tracking-wider text-white transition-colors">TABI KOREA</div>
+            <div class="text-[10px] text-slate-300 tracking-widest -mt-1">韓国公式トラベルガイド</div>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden xl:flex items-center space-x-6 text-sm font-medium">
+          <a href="#areas" class="nav-link text-slate-100 hover:text-white transition-colors">人気エリア</a>
+          <a href="#map" class="nav-link text-slate-100 hover:text-white transition-colors">ソウルマップ</a>
+          <a href="#themes" class="nav-link text-slate-100 hover:text-white transition-colors">テーマ別旅</a>
+          <a href="#phrases" class="nav-link text-slate-100 hover:text-white transition-colors">旅の韓国語</a>
+          <a href="#tips" class="nav-link text-slate-100 hover:text-white transition-colors">旅行TIPS</a>
+          <a href="#weather" class="nav-link text-slate-100 hover:text-white transition-colors">気候・服装</a>
+          <a href="#currency" class="nav-link text-slate-100 hover:text-white transition-colors">レート換算</a>
+          <a href="#faq" class="nav-link text-slate-100 hover:text-white transition-colors">FAQ</a>
+        </nav>
+
+        <!-- Right Quick Actions -->
+        <div class="hidden md:flex items-center space-x-3">
+          <button type="button" id="navOpenPlanBtn" class="bg-white/20 hover:bg-white/30 text-white text-xs px-3.5 py-2 rounded-full border border-white/20 transition-all flex items-center space-x-1.5">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+            </svg>
+            <span>マイ旅リスト</span>
+          </button>
+          <a href="tel:1330" id="headerBadge" class="bg-white/20 hover:bg-white/30 text-white text-xs px-3.5 py-2 rounded-full border border-white/20 transition-all flex items-center space-x-1.5">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
+            <span>日本語通訳 1330</span>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="xl:hidden flex items-center">
+          <button id="mobileMenuBtn" type="button" class="p-2 rounded-lg text-white hover:bg-white/10 transition-colors focus:outline-none" aria-label="メニュー開閉">
+            <svg class="w-6 h-6 stroke-white" fill="none" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobileDrawer" class="hidden xl:hidden bg-white border-b border-slate-200 shadow-xl px-4 pt-2 pb-6 space-y-2">
+      <a href="#areas" class="mobile-nav-link block py-2 px-3 rounded-md text-sm font-medium text-slate-700 hover:bg-slate-100">人気エリア</a>
+      <a href="#map" class="mobile-nav-link block py-2 px-3 rounded-md text-sm font-medium text-slate-700 hover:bg-slate-100">ソウル観光マップ</a>
+      <a href="#themes" class="mobile-nav-link block py-2 px-3 rounded-md text-sm font-medium text-slate-700 hover:bg-slate-100">テーマ別旅</a>
+      <a href="#phrases" class="mobile-nav-link block py-2 px-3 rounded-md text-sm font-medium text-slate-700 hover:bg-slate-100">旅の韓国語会話</a>
+      <a href="#tips" class="mobile-nav-link block py-2 px-3 rounded-md text-sm font-medium text-slate-700 hover:bg-slate-100">旅行TIPS</a>
+      <a href="#weather" class="mobile-nav-link block py-2 px-3 rounded-md text-sm font-medium text-slate-700 hover:bg-slate-100">気候・服装</a>
+      <a href="#currency" class="mobile-nav-link block py-2 px-3 rounded-md text-sm font-medium text-slate-700 hover:bg-slate-100">レート換算</a>
+      <a href="#faq" class="mobile-nav-link block py-2 px-3 rounded-md text-sm font-medium text-slate-700 hover:bg-slate-100">FAQ</a>
+      <div class="pt-3 border-t border-slate-100 space-y-2">
+        <button type="button" id="mobileOpenPlanBtn" class="w-full text-center py-2 px-4 rounded-lg bg-blue-50 text-blue-900 text-sm font-medium border border-blue-200">
+          マイ旅リストを開く
+        </button>
+        <a href="tel:1330" class="block text-center py-2 px-4 rounded-lg bg-blue-900 text-white text-sm font-medium">
+          韓国観光ホットライン (1330)
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-[640px] flex items-center justify-center pt-24 pb-16 overflow-hidden">
+    <!-- Background Image with Overlay -->
+    <div class="absolute inset-0 z-0">
+      <img src="https://images.unsplash.com/photo-1538485399081-7191377e8241?auto=format&fit=crop&w=1920&q=80" alt="ソウル 景福宮と都心のスカイライン" class="w-full h-full object-cover">
+      <div class="absolute inset-0 hero-gradient"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="relative z-10 max-w-5xl mx-auto px-4 text-center text-white">
+      <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs tracking-wider uppercase mb-6 font-en backdrop-blur-sm">
+        <span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span>
+        <span>The Official Guide for Japan Travelers</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight mb-6">
+        今、いちばん近い特別な旅へ。<br>
+        <span class="text-blue-200">韓国旅行のすべて。</span>
+      </h1>
+      <p class="text-base sm:text-lg text-slate-200 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+        話題の最新トレンドタウン「聖水・漢南洞」から、インタラクティブ地図、本場K-グルメ、指さし韓国語、WOWPASS活用法まで徹底ガイド。
+      </p>
+
+      <!-- Popular Keyword Tags -->
+      <div class="flex flex-wrap justify-center items-center gap-2 max-w-3xl mx-auto mb-12 text-xs">
+        <span class="text-slate-300 mr-2 font-medium">注目キーワード:</span>
+        <a href="#map" class="bg-white/15 hover:bg-white/25 px-3 py-1 rounded-full backdrop-blur-sm border border-white/20 transition-colors">#ソウル観光マップ</a>
+        <a href="#areas" class="bg-white/15 hover:bg-white/25 px-3 py-1 rounded-full backdrop-blur-sm border border-white/20 transition-colors">#聖水カフェ巡り</a>
+        <a href="#phrases" class="bg-white/15 hover:bg-white/25 px-3 py-1 rounded-full backdrop-blur-sm border border-white/20 transition-colors">#指さし韓国語</a>
+        <a href="#tips" class="bg-white/15 hover:bg-white/25 px-3 py-1 rounded-full backdrop-blur-sm border border-white/20 transition-colors">#WOWPASS活用術</a>
+        <a href="#themes" class="bg-white/15 hover:bg-white/25 px-3 py-1 rounded-full backdrop-blur-sm border border-white/20 transition-colors">#オリーブヤング必買</a>
+        <a href="#weather" class="bg-white/15 hover:bg-white/25 px-3 py-1 rounded-full backdrop-blur-sm border border-white/20 transition-colors">#ソウル季節の服装</a>
+      </div>
+
+      <!-- Quick Summary Metric Bar -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl mx-auto">
+        <div class="bg-slate-900/60 backdrop-blur-md border border-white/10 rounded-xl p-4 text-left">
+          <div class="text-[11px] text-slate-400">時差</div>
+          <div class="text-base font-bold text-white mt-1">時差なし (0時間)</div>
+          <div class="text-[10px] text-slate-400 mt-0.5">時計の変更不要</div>
+        </div>
+        <div class="bg-slate-900/60 backdrop-blur-md border border-white/10 rounded-xl p-4 text-left">
+          <div class="text-[11px] text-slate-400">フライト時間</div>
+          <div class="text-base font-bold text-white mt-1">約1時間20分〜</div>
+          <div class="text-[10px] text-slate-400 mt-0.5">東京約2.5h / 福岡約1.3h</div>
+        </div>
+        <div class="bg-slate-900/60 backdrop-blur-md border border-white/10 rounded-xl p-4 text-left">
+          <div class="text-[11px] text-slate-400">ビザ規定</div>
+          <div class="text-base font-bold text-white mt-1">観光ビザ不要</div>
+          <div class="text-[10px] text-slate-400 mt-0.5">K-ETA一時免除措置中</div>
+        </div>
+        <div class="bg-slate-900/60 backdrop-blur-md border border-white/10 rounded-xl p-4 text-left">
+          <div class="text-[11px] text-slate-400">決済事情</div>
+          <div class="text-base font-bold text-white mt-1">完全キャッシュレス</div>
+          <div class="text-[10px] text-slate-400 mt-0.5">カード & WOWPASS主流</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Popular Areas (HOT SPOTS) with Bookmark buttons -->
+  <section id="areas" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+      <div>
+        <div class="inline-flex items-center space-x-1 text-blue-900 text-xs font-bold uppercase tracking-widest mb-2 font-en">
+          <span>POPULAR AREAS</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">今行くべき、注目のトレンドエリア</h2>
+      </div>
+      <p class="text-sm text-slate-500 mt-3 md:mt-0 max-w-md">
+        古き良き歴史と最先端のトレンドが共存するソウル。日本人旅行者に圧倒的人気を誇る厳選エリアをご紹介します。
+      </p>
+    </div>
+
+    <!-- Area Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Area Card 1: Seongsu -->
+      <article class="spot-card bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm flex flex-col"
+        data-spot-title="聖水洞（ソンスドン / Seongsu）"
+        data-spot-area="ソウル・城東区"
+        data-spot-category="カフェ・ポップアップ・ファッション"
+        data-spot-desc="かつての製靴工場街がリノベーションされ、今や韓国で最も注目されるトレンド発信地に。週末ごとに話題のファッション・コスメブランドのポップアップストアが開催され、巨大なベーカリーカフェや高感度なセレクトショップが立ち並びます。"
+        data-spot-station="地下鉄2号線「聖水駅」3番または4番出口"
+        data-spot-tips="午前中は営業していない店舗が多いため、11:30以降の訪問がおすすめ。人気のポップアップストアは事前予約または現地での整理券発券が必要です。"
+        data-spot-img="https://images.unsplash.com/photo-1583037189850-1921ae7c6c22?auto=format&fit=crop&w=800&q=80">
+        <div class="relative h-56 overflow-hidden bg-slate-100">
+          <img src="https://images.unsplash.com/photo-1583037189850-1921ae7c6c22?auto=format&fit=crop&w=800&q=80" alt="聖水洞のストリート" class="spot-img w-full h-full object-cover">
+          <span class="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-md text-white text-xs px-2.5 py-1 rounded-md font-medium">ソウルのブルックリン</span>
+          <button type="button" class="btn-bookmark absolute top-4 right-4 bg-white/90 backdrop-blur-md text-slate-700 hover:text-blue-900 p-2 rounded-full border border-slate-200 transition-colors shadow-sm"
+            data-spot-id="spot_seongsu"
+            data-spot-title="聖水洞 (ソンスドン)"
+            data-spot-area="城東区・地下鉄2号線"
+            data-spot-category="トレンドカフェ・ショップ"
+            aria-label="マイ旅に保存">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+            </svg>
+          </button>
+        </div>
+        <div class="p-6 flex-1 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs text-slate-500 mb-2">
+              <span class="font-medium text-blue-900">地下鉄2号線 聖水駅</span>
+              <span>若者・流行発信地</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">聖水洞 (ソンスドン)</h3>
+            <p class="text-sm text-slate-600 line-clamp-2 mb-4 leading-relaxed">
+              工場リノベカフェや週末ポップアップが賑わう、現在ソウルで最も勢いのある最新トレンドの聖地。
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs text-slate-400">見どころ: TAMBURINS, カフェ大林倉庫</span>
+            <button type="button" class="open-spot-modal text-xs font-bold text-blue-900 hover:text-blue-700 flex items-center space-x-1">
+              <span>詳細を見る</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Area Card 2: Hannam-dong -->
+      <article class="spot-card bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm flex flex-col"
+        data-spot-title="漢南洞（ハンナムドン / Hannam-dong）"
+        data-spot-area="ソウル・龍山区"
+        data-spot-category="デザイナーズブランド・洗練カフェ"
+        data-spot-desc="各国大使館や高級住宅街が広がる閑静なエリアに、韓国発のモード系ファッションブランドや洗練されたカフェ、現代アートギャラリーが集積。日本人ファッション関係者や感度の高い旅行者に圧倒的な支持を得ています。"
+        data-spot-station="地下鉄6号線「漢江鎮駅」1番または3番出口"
+        data-spot-tips="坂道が多い街並みのため、歩きやすいスニーカーでの散策がおすすめ。Mardi MercrediやMARITHEなどの人気ショップは混雑します。"
+        data-spot-img="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80">
+        <div class="relative h-56 overflow-hidden bg-slate-100">
+          <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80" alt="漢南洞のブティックストリート" class="spot-img w-full h-full object-cover">
+          <span class="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-md text-white text-xs px-2.5 py-1 rounded-md font-medium">高感度ファッションの街</span>
+          <button type="button" class="btn-bookmark absolute top-4 right-4 bg-white/90 backdrop-blur-md text-slate-700 hover:text-blue-900 p-2 rounded-full border border-slate-200 transition-colors shadow-sm"
+            data-spot-id="spot_hannam"
+            data-spot-title="漢南洞 (ハンナムドン)"
+            data-spot-area="龍山区・地下鉄6号線"
+            data-spot-category="デザイナーズ・ギャラリー"
+            aria-label="マイ旅に保存">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+            </svg>
+          </button>
+        </div>
+        <div class="p-6 flex-1 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs text-slate-500 mb-2">
+              <span class="font-medium text-blue-900">地下鉄6号線 漢江鎮駅</span>
+              <span>セレクトショップ・カフェ</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">漢南洞 (ハンナムドン)</h3>
+            <p class="text-sm text-slate-600 line-clamp-2 mb-4 leading-relaxed">
+              人気アパレルブランドのフラッグシップ店や洗練されたギャラリーカフェが立ち並ぶ高級ストリート。
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs text-slate-400">見どころ: Mardi Mercredi, Leeum美術館</span>
+            <button type="button" class="open-spot-modal text-xs font-bold text-blue-900 hover:text-blue-700 flex items-center space-x-1">
+              <span>詳細を見る</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Area Card 3: Myeongdong -->
+      <article class="spot-card bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm flex flex-col"
+        data-spot-title="明洞（ミョンドン / Myeongdong）"
+        data-spot-area="ソウル・中区"
+        data-spot-category="コスメ・両替・屋台グルメ"
+        data-spot-desc="日本人旅行者の王道拠点。大型オリーブヤングやコスメ専門旗艦店、お得な公認両替所が密集。夕方以降は歩行者天国に多種多様な屋台が並び、夜遅くまでショッピングと食べ歩きが楽しめます。"
+        data-spot-station="地下鉄4号線「明洞駅」6番出口 / 2号線「乙支路入口駅」"
+        data-spot-tips="両替は空港よりも明洞の大使館前両替所など公認両替所の方がレートが有利です。屋台では一部現金が必要な場合があります。"
+        data-spot-img="https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=800&q=80">
+        <div class="relative h-56 overflow-hidden bg-slate-100">
+          <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=800&q=80" alt="明洞のネオン街" class="spot-img w-full h-full object-cover">
+          <span class="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-md text-white text-xs px-2.5 py-1 rounded-md font-medium">韓国旅行の王道拠点</span>
+          <button type="button" class="btn-bookmark absolute top-4 right-4 bg-white/90 backdrop-blur-md text-slate-700 hover:text-blue-900 p-2 rounded-full border border-slate-200 transition-colors shadow-sm"
+            data-spot-id="spot_myeongdong"
+            data-spot-title="明洞 (ミョンドン)"
+            data-spot-area="中区・地下鉄4号線"
+            data-spot-category="コスメ・屋台・両替"
+            aria-label="マイ旅に保存">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+            </svg>
+          </button>
+        </div>
+        <div class="p-6 flex-1 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs text-slate-500 mb-2">
+              <span class="font-medium text-blue-900">地下鉄4号線 明洞駅</span>
+              <span>コスメ・グルメ・両替</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">明洞 (ミョンドン)</h3>
+            <p class="text-sm text-slate-600 line-clamp-2 mb-4 leading-relaxed">
+              コスメの一括購入や両替、夕暮れからの屋台食べ歩きまで、初心者は外せない安心の定番スポット。
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs text-slate-400">見どころ: オリーブヤング明洞タウン, 明洞聖堂</span>
+            <button type="button" class="open-spot-modal text-xs font-bold text-blue-900 hover:text-blue-700 flex items-center space-x-1">
+              <span>詳細を見る</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Area Card 4: Hongdae & Yeonnam -->
+      <article class="spot-card bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm flex flex-col"
+        data-spot-title="弘大・延南洞（ホンデ・ヨンナムドン）"
+        data-spot-area="ソウル・麻浦区"
+        data-spot-category="若者文化・雑貨・グルメストリート"
+        data-spot-desc="美術大学を中心とするサブカルチャーとナイトライフの街。隣接する延南洞（ヨンナムドン）は廃線跡を整備した京義線スッキル公園沿いに個性豊かな雑貨屋や隠れ家カフェが点在します。"
+        data-spot-station="空港鉄道・地下鉄2号線「弘大入口駅」3番または9番出口"
+        data-spot-tips="空港鉄道の直通・各駅停車が通っているため、空港からのアクセスも抜群。ホテル宿泊先としても人気です。"
+        data-spot-img="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=800&q=80">
+        <div class="relative h-56 overflow-hidden bg-slate-100">
+          <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=800&q=80" alt="弘大の賑やかなストリート" class="spot-img w-full h-full object-cover">
+          <span class="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-md text-white text-xs px-2.5 py-1 rounded-md font-medium">カルチャー&雑貨の街</span>
+          <button type="button" class="btn-bookmark absolute top-4 right-4 bg-white/90 backdrop-blur-md text-slate-700 hover:text-blue-900 p-2 rounded-full border border-slate-200 transition-colors shadow-sm"
+            data-spot-id="spot_hongdae"
+            data-spot-title="弘大・延南洞 (ホンデ)"
+            data-spot-area="麻浦区・空港鉄道/2号線"
+            data-spot-category="若者・雑貨・カフェ"
+            aria-label="マイ旅に保存">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+            </svg>
+          </button>
+        </div>
+        <div class="p-6 flex-1 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs text-slate-500 mb-2">
+              <span class="font-medium text-blue-900">空港鉄道/2号線 弘大入口駅</span>
+              <span>若者・雑貨・カフェ</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">弘大・延南洞 (ホンデ)</h3>
+            <p class="text-sm text-slate-600 line-clamp-2 mb-4 leading-relaxed">
+              ストリートパフォーマンスや可愛い文具・雑貨ショップ、延南洞の落ち着いた路地裏カフェが魅力。
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs text-slate-400">見どころ: 京義線スッキル, 駐車場通り</span>
+            <button type="button" class="open-spot-modal text-xs font-bold text-blue-900 hover:text-blue-700 flex items-center space-x-1">
+              <span>詳細を見る</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Area Card 5: Ikseon-dong -->
+      <article class="spot-card bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm flex flex-col"
+        data-spot-title="益善洞（イクソンドン / Ikseon-dong）"
+        data-spot-area="ソウル・鐘路区"
+        data-spot-category="韓屋カフェ・レトロモダン"
+        data-spot-desc="1920年代に建てられた伝統的な韓屋（ハノク）密集地をリノベーションした迷路のような路地。風情ある瓦屋根の下で味わうスフレパンケーキや蒸しパン、クラフトビールが大人気です。"
+        data-spot-station="地下鉄1・3・5号線「鐘路3街駅」4番出口"
+        data-spot-tips="路地が狭いため週末の午後は非常に混雑します。午前中（10:30頃〜）に散策を開始すると比較的ゆったり写真撮影が楽しめます。"
+        data-spot-img="https://images.unsplash.com/photo-1548115184-bc6544d06a58?auto=format&fit=crop&w=800&q=80">
+        <div class="relative h-56 overflow-hidden bg-slate-100">
+          <img src="https://images.unsplash.com/photo-1548115184-bc6544d06a58?auto=format&fit=crop&w=800&q=80" alt="益善洞の韓屋路地" class="spot-img w-full h-full object-cover">
+          <span class="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-md text-white text-xs px-2.5 py-1 rounded-md font-medium">伝統韓屋のレトロ空間</span>
+          <button type="button" class="btn-bookmark absolute top-4 right-4 bg-white/90 backdrop-blur-md text-slate-700 hover:text-blue-900 p-2 rounded-full border border-slate-200 transition-colors shadow-sm"
+            data-spot-id="spot_ikseon"
+            data-spot-title="益善洞 (イクソンドン)"
+            data-spot-area="鐘路区・地下鉄鐘路3街駅"
+            data-spot-category="韓屋・スイーツ"
+            aria-label="マイ旅に保存">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+            </svg>
+          </button>
+        </div>
+        <div class="p-6 flex-1 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs text-slate-500 mb-2">
+              <span class="font-medium text-blue-900">地下鉄 鐘路3街駅</span>
+              <span>韓屋・スイーツ・写真映え</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">益善洞 (イクソンドン)</h3>
+            <p class="text-sm text-slate-600 line-clamp-2 mb-4 leading-relaxed">
+              伝統家屋とモダンインテリアが美しく調和した、歩くだけで絵になるレトロな人気ストリート。
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs text-slate-400">見どころ: 清水堂(チョンスダン), 小夏塩田</span>
+            <button type="button" class="open-spot-modal text-xs font-bold text-blue-900 hover:text-blue-700 flex items-center space-x-1">
+              <span>詳細を見る</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Area Card 6: Bukchon & Samcheong-dong -->
+      <article class="spot-card bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm flex flex-col"
+        data-spot-title="北村韓屋村・三清洞（プッチョン・サムチョンドン）"
+        data-spot-area="ソウル・鐘路区"
+        data-spot-category="歴史散策・アート・伝統茶"
+        data-spot-desc="朝鮮王朝時代の両班（貴族）が暮らした歴史的韓屋がそのまま残る北村。坂の上からは伝統家屋の瓦屋根と現代の高層ビル群が織りなすパノラマビューを望めます。"
+        data-spot-station="地下鉄3号線「安国駅」2番または3番出口"
+        data-spot-tips="現在も一般住民が生活している居住地のため、騒音マナーや訪問可能時間（通常9:00〜17:00頃）の遵守が求められます。"
+        data-spot-img="https://images.unsplash.com/photo-1538485399081-7191377e8241?auto=format&fit=crop&w=800&q=80">
+        <div class="relative h-56 overflow-hidden bg-slate-100">
+          <img src="https://images.unsplash.com/photo-1538485399081-7191377e8241?auto=format&fit=crop&w=800&q=80" alt="北村韓屋村" class="spot-img w-full h-full object-cover">
+          <span class="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-md text-white text-xs px-2.5 py-1 rounded-md font-medium">王宮に寄り添う歴史街</span>
+          <button type="button" class="btn-bookmark absolute top-4 right-4 bg-white/90 backdrop-blur-md text-slate-700 hover:text-blue-900 p-2 rounded-full border border-slate-200 transition-colors shadow-sm"
+            data-spot-id="spot_bukchon"
+            data-spot-title="北村韓屋村 (プッチョン)"
+            data-spot-area="鐘路区・地下鉄3号線安国駅"
+            data-spot-category="歴史・景観・韓服"
+            aria-label="マイ旅に保存">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+            </svg>
+          </button>
+        </div>
+        <div class="p-6 flex-1 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs text-slate-500 mb-2">
+              <span class="font-medium text-blue-900">地下鉄3号線 安国駅</span>
+              <span>韓屋景観・伝統工芸</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">北村韓屋村 (プッチョン)</h3>
+            <p class="text-sm text-slate-600 line-clamp-2 mb-4 leading-relaxed">
+              景福宮と昌徳宮の間に広がる優美な伝統家屋群。韓服レンタルでの記念撮影スポットとしても定番。
+            </p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-xs text-slate-400">見どころ: 北村八景, 三清洞通り</span>
+            <button type="button" class="open-spot-modal text-xs font-bold text-blue-900 hover:text-blue-700 flex items-center space-x-1">
+              <span>詳細を見る</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- NEW SECTION: Interactive Seoul Travel Map -->
+  <section id="map" class="py-20 bg-slate-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <div class="inline-flex items-center space-x-1 text-blue-400 text-xs font-bold uppercase tracking-widest mb-2 font-en">
+          <span>INTERACTIVE SEOUL MAP</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-bold">ソウル観光インタラクティブ・マップ</h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-2">
+          漢江（ハンガン）を挟んで広がるソウルの人気8エリア。気になるピンをクリックすると、所要時間や最寄り駅、NAVERマップの道順を確認できます。
+        </p>
+      </div>
+
+      <!-- Quick Area Select Chips -->
+      <div class="flex flex-wrap items-center justify-center gap-2 mb-8">
+        <button type="button" class="map-chip-btn bg-blue-900 text-white font-bold px-3.5 py-1.5 rounded-full text-xs border border-blue-700 transition-colors shadow-sm" data-area-key="seongsu">
+          聖水 (ソンス)
+        </button>
+        <button type="button" class="map-chip-btn bg-white text-slate-700 px-3.5 py-1.5 rounded-full text-xs border border-slate-300 hover:bg-slate-100 transition-colors shadow-sm" data-area-key="hannam">
+          漢南洞 (ハンナム)
+        </button>
+        <button type="button" class="map-chip-btn bg-white text-slate-700 px-3.5 py-1.5 rounded-full text-xs border border-slate-300 hover:bg-slate-100 transition-colors shadow-sm" data-area-key="myeongdong">
+          明洞 (ミョンドン)
+        </button>
+        <button type="button" class="map-chip-btn bg-white text-slate-700 px-3.5 py-1.5 rounded-full text-xs border border-slate-300 hover:bg-slate-100 transition-colors shadow-sm" data-area-key="hongdae">
+          弘大 (ホンデ)
+        </button>
+        <button type="button" class="map-chip-btn bg-white text-slate-700 px-3.5 py-1.5 rounded-full text-xs border border-slate-300 hover:bg-slate-100 transition-colors shadow-sm" data-area-key="ikseon">
+          益善洞 (イクソン)
+        </button>
+        <button type="button" class="map-chip-btn bg-white text-slate-700 px-3.5 py-1.5 rounded-full text-xs border border-slate-300 hover:bg-slate-100 transition-colors shadow-sm" data-area-key="gangnam">
+          江南・新沙
+        </button>
+        <button type="button" class="map-chip-btn bg-white text-slate-700 px-3.5 py-1.5 rounded-full text-xs border border-slate-300 hover:bg-slate-100 transition-colors shadow-sm" data-area-key="jamsil">
+          蚕室 (チャムシル)
+        </button>
+        <button type="button" class="map-chip-btn bg-white text-slate-700 px-3.5 py-1.5 rounded-full text-xs border border-slate-300 hover:bg-slate-100 transition-colors shadow-sm" data-area-key="dongdaemun">
+          東大門 (DDP)
+        </button>
+      </div>
+
+      <!-- Map & Detail Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        <!-- Map Canvas Visual (Left 7 Cols) -->
+        <div class="lg:col-span-7 bg-slate-950/80 border border-slate-800 rounded-3xl p-4 sm:p-8 relative overflow-hidden flex flex-col justify-between shadow-2xl min-h-[480px]">
+          <!-- Top Area Labels -->
+          <div class="flex justify-between items-center text-[11px] text-slate-400 border-b border-slate-800/80 pb-3 mb-4">
+            <span class="font-bold text-blue-300">江北エリア (江北 / NORTH)</span>
+            <span class="text-slate-500">漢江（ハンガン）を挟む位置関係</span>
+            <span class="font-bold text-indigo-300">江南エリア (江南 / SOUTH)</span>
+          </div>
+
+          <!-- SVG Visual Map Surface -->
+          <div class="relative w-full h-[360px] sm:h-[400px] my-auto">
+            <!-- Han River Background SVG Curve -->
+            <svg class="absolute inset-0 w-full h-full" viewBox="0 0 700 400" preserveAspectRatio="none">
+              <!-- Grid reference lines -->
+              <line x1="0" y1="200" x2="700" y2="200" stroke="#1e293b" stroke-dasharray="4 4" stroke-width="1"/>
+              <!-- Han River -->
+              <path d="M 0,220 C 180,180 280,250 440,210 C 560,180 640,220 700,210" class="map-river-path"/>
+              <text x="340" y="240" fill="#60a5fa" font-size="11" font-weight="bold" opacity="0.8">漢江 (Han River)</text>
+            </svg>
+
+            <!-- Pin 1: Hongdae (Top Left) -->
+            <div class="map-marker absolute" style="top: 25%; left: 16%;" data-area-key="hongdae">
+              <div class="map-marker-pulse"></div>
+              <div class="map-marker-pin bg-slate-800 text-slate-200 border border-slate-600 text-xs px-2.5 py-1 rounded-full shadow-lg font-medium flex items-center space-x-1">
+                <span class="w-2 h-2 rounded-full bg-indigo-400"></span>
+                <span>弘大・延南</span>
+              </div>
+            </div>
+
+            <!-- Pin 2: Ikseon / Jongno (Top Center-Left) -->
+            <div class="map-marker absolute" style="top: 14%; left: 42%;" data-area-key="ikseon">
+              <div class="map-marker-pulse"></div>
+              <div class="map-marker-pin bg-slate-800 text-slate-200 border border-slate-600 text-xs px-2.5 py-1 rounded-full shadow-lg font-medium flex items-center space-x-1">
+                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                <span>益善洞</span>
+              </div>
+            </div>
+
+            <!-- Pin 3: Myeongdong (Center North) -->
+            <div class="map-marker absolute" style="top: 28%; left: 40%;" data-area-key="myeongdong">
+              <div class="map-marker-pulse"></div>
+              <div class="map-marker-pin bg-slate-800 text-slate-200 border border-slate-600 text-xs px-2.5 py-1 rounded-full shadow-lg font-medium flex items-center space-x-1">
+                <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                <span>明洞</span>
+              </div>
+            </div>
+
+            <!-- Pin 4: Dongdaemun (Center North-East) -->
+            <div class="map-marker absolute" style="top: 24%; left: 62%;" data-area-key="dongdaemun">
+              <div class="map-marker-pulse"></div>
+              <div class="map-marker-pin bg-slate-800 text-slate-200 border border-slate-600 text-xs px-2.5 py-1 rounded-full shadow-lg font-medium flex items-center space-x-1">
+                <span class="w-2 h-2 rounded-full bg-rose-400"></span>
+                <span>東大門</span>
+              </div>
+            </div>
+
+            <!-- Pin 5: Hannam (North of River, Center) -->
+            <div class="map-marker absolute" style="top: 44%; left: 48%;" data-area-key="hannam">
+              <div class="map-marker-pulse"></div>
+              <div class="map-marker-pin bg-slate-800 text-slate-200 border border-slate-600 text-xs px-2.5 py-1 rounded-full shadow-lg font-medium flex items-center space-x-1">
+                <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+                <span>漢南洞</span>
+              </div>
+            </div>
+
+            <!-- Pin 6: Seongsu (Active default - North-East of River) -->
+            <div class="map-marker active absolute" style="top: 40%; left: 74%;" data-area-key="seongsu">
+              <div class="map-marker-pulse"></div>
+              <div class="map-marker-pin bg-blue-900 text-white border-2 border-white text-xs px-3 py-1 rounded-full shadow-xl font-bold flex items-center space-x-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                <span>聖水 (ソンス)</span>
+              </div>
+            </div>
+
+            <!-- Pin 7: Gangnam / Sinsa (South of River, Center) -->
+            <div class="map-marker absolute" style="top: 68%; left: 50%;" data-area-key="gangnam">
+              <div class="map-marker-pulse"></div>
+              <div class="map-marker-pin bg-slate-800 text-slate-200 border border-slate-600 text-xs px-2.5 py-1 rounded-full shadow-lg font-medium flex items-center space-x-1">
+                <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+                <span>江南・新沙</span>
+              </div>
+            </div>
+
+            <!-- Pin 8: Jamsil (South of River, East) -->
+            <div class="map-marker absolute" style="top: 72%; left: 78%;" data-area-key="jamsil">
+              <div class="map-marker-pulse"></div>
+              <div class="map-marker-pin bg-slate-800 text-slate-200 border border-slate-600 text-xs px-2.5 py-1 rounded-full shadow-lg font-medium flex items-center space-x-1">
+                <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+                <span>蚕室</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Notice in Map -->
+          <div class="pt-3 border-t border-slate-800 text-[11px] text-slate-400 flex items-center justify-between">
+            <span>※ ピンをクリックすると右側の詳細パネルが切り替わります</span>
+            <span class="text-slate-500">ソウル地下鉄2号線・3号線・4号線接続</span>
+          </div>
+        </div>
+
+        <!-- Area Detail Information Panel (Right 5 Cols) -->
+        <div class="lg:col-span-5 bg-slate-800/90 border border-slate-700 rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-2xl">
+          <div>
+            <div class="flex items-center justify-between text-xs text-blue-400 mb-2 font-en">
+              <span id="mapDetailRegion">江北・東部 (地下鉄2号線 聖水駅)</span>
+              <span class="bg-blue-900/60 text-blue-200 px-2.5 py-0.5 rounded-full border border-blue-700">エリア詳細</span>
+            </div>
+            <h3 id="mapDetailName" class="text-2xl sm:text-3xl font-bold text-white mb-4">聖水洞 (ソンスドン)</h3>
+            <p id="mapDetailDesc" class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6">
+              工場リノベカフェと週末限定ポップアップストアが密集する、ソウルで最もホットな若者・クリエイターの街。
+            </p>
+
+            <!-- Metadata Box -->
+            <div class="bg-slate-900/80 rounded-2xl p-4 border border-slate-700/80 space-y-3 text-xs mb-6">
+              <div class="flex items-start space-x-2">
+                <span class="text-slate-400 font-bold shrink-0">推奨所要時間:</span>
+                <span id="mapDetailTime" class="text-slate-200 font-medium">約3〜4時間 (午後の散策推奨)</span>
+              </div>
+              <div class="flex items-start space-x-2">
+                <span class="text-slate-400 font-bold shrink-0">代表スポット:</span>
+                <span id="mapDetailHighlights" class="text-slate-200 font-medium">大林倉庫, TAMBURINS聖水フラッグシップ, アトリエ通り</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- NAVER Map Direct Link Button -->
+          <div>
+            <a id="mapNaverLink" href="https://map.naver.com/p/search/%EC%84%B1%EC%88%98%EB%8F%99%EC%B9%B4%ED%8E%98%EA%B1%B0%EB%A6%AC" target="_blank" rel="noopener noreferrer"
+              class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 px-4 rounded-xl text-xs sm:text-sm flex items-center justify-center space-x-2 transition-colors shadow-lg">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+              </svg>
+              <span>NAVERマップで位置・ルートを見る (公式)</span>
+            </a>
+            <p class="text-[11px] text-slate-400 text-center mt-2.5">
+              ※ 韓国現地での徒歩ナビゲーションはNAVERマップが最も正確です
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Curated Themes (THEME TRAVEL) with jQuery Filter & Bookmark buttons -->
+  <section id="themes" class="py-20 bg-slate-100/70 border-y border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <div class="inline-flex items-center space-x-1 text-blue-900 text-xs font-bold uppercase tracking-widest mb-2 font-en">
+          <span>CURATED THEMES</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">テーマで選ぶ、旅の楽しみ方</h2>
+        <p class="text-sm text-slate-500 mt-2">
+          本格K-グルメから美容クリニック、フォトジェニックなカフェまで、目的に合わせて選べるテーマ別ガイド。
+        </p>
+      </div>
+
+      <!-- Tab Buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-2 mb-10">
+        <button type="button" class="tab-btn active px-4 py-2 rounded-full text-xs font-medium border border-blue-900 bg-blue-50 text-blue-900 transition-all shadow-sm" data-filter="all">
+          すべて表示
+        </button>
+        <button type="button" class="tab-btn px-4 py-2 rounded-full text-xs font-medium border border-slate-300 bg-white text-slate-600 hover:border-slate-400 transition-all" data-filter="gourmet">
+          本場K-グルメ
+        </button>
+        <button type="button" class="tab-btn px-4 py-2 rounded-full text-xs font-medium border border-slate-300 bg-white text-slate-600 hover:border-slate-400 transition-all" data-filter="cafe">
+          カフェ & スイーツ
+        </button>
+        <button type="button" class="tab-btn px-4 py-2 rounded-full text-xs font-medium border border-slate-300 bg-white text-slate-600 hover:border-slate-400 transition-all" data-filter="beauty">
+          K-Beauty & ケア
+        </button>
+        <button type="button" class="tab-btn px-4 py-2 rounded-full text-xs font-medium border border-slate-300 bg-white text-slate-600 hover:border-slate-400 transition-all" data-filter="culture">
+          伝統 & 体験
+        </button>
+      </div>
+
+      <!-- Theme Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Item 1: Gourmet (Samgyeopsal) -->
+        <div class="theme-card-item bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm flex flex-col relative" data-category="gourmet">
+          <div class="h-44 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1590301157890-4810ed352733?auto=format&fit=crop&w=600&q=80" alt="サムギョプサル" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+            <button type="button" class="btn-bookmark absolute top-3 right-3 bg-white/90 backdrop-blur-md text-slate-700 hover:text-blue-900 p-1.5 rounded-full border border-slate-200 shadow-sm"
+              data-spot-id="theme_samgyeopsal"
+              data-spot-title="熟成サムギョプサル & モクサル"
+              data-spot-area="新堂・往十里など"
+              data-spot-category="K-グルメ"
+              aria-label="マイ旅に保存">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
+            </button>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="badge-tag bg-amber-50 text-amber-800 mb-2">K-グルメ</span>
+              <h4 class="text-base font-bold text-slate-900 mb-1.5">熟成サムギョプサル & モクサル</h4>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                極厚の熟成豚肉を店員さんが絶妙な焼き加減で仕上げてくれる名店が勢ぞろい。行者ニンニクの醤油漬けと一緒に食べるのが通の流儀。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] text-slate-400">
+              人気スポット: 金豚食堂 (クムテジ食堂), 肉典食堂
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2: Gourmet (Street Food) -->
+        <div class="theme-card-item bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm flex flex-col relative" data-category="gourmet">
+          <div class="h-44 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=600&q=80" alt="広蔵市場の屋台グルメ" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+            <button type="button" class="btn-bookmark absolute top-3 right-3 bg-white/90 backdrop-blur-md text-slate-700 hover:text-blue-900 p-1.5 rounded-full border border-slate-200 shadow-sm"
+              data-spot-id="theme_gwangjang"
+              data-spot-title="広蔵市場 (クァンジャンシジャン)"
+              data-spot-area="鐘路5街駅"
+              data-spot-category="屋台グルメ"
+              aria-label="マイ旅に保存">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
+            </button>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="badge-tag bg-amber-50 text-amber-800 mb-2">K-グルメ</span>
+              <h4 class="text-base font-bold text-slate-900 mb-1.5">広蔵市場 (クァンジャンシジャン)</h4>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                活気あふれる百年市場。揚げたてピンデトッ（緑豆チヂミ）、麻薬キンパ、生タコとユッケの盛り合わせなど本場の屋台文化を満喫。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] text-slate-400">
+              アクセス: 地下鉄1号線 鐘路5街駅 8番出口すぐ
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3: Cafe (Bakery & Specialty) -->
+        <div class="theme-card-item bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm flex flex-col relative" data-category="cafe">
+          <div class="h-44 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=600&q=80" alt="カフェ空間" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+            <button type="button" class="btn-bookmark absolute top-3 right-3 bg-white/90 backdrop-blur-md text-slate-700 hover:text-blue-900 p-1.5 rounded-full border border-slate-200 shadow-sm"
+              data-spot-id="theme_bakery"
+              data-spot-title="大型デザインベーカリーカフェ"
+              data-spot-area="聖水・安国"
+              data-spot-category="カフェ巡り"
+              aria-label="マイ旅に保存">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
+            </button>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="badge-tag bg-emerald-50 text-emerald-800 mb-2">カフェ巡り</span>
+              <h4 class="text-base font-bold text-slate-900 mb-1.5">大型デザインベーカリーカフェ</h4>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                味はもちろん空間演出が圧倒的なソウルのカフェ文化。焼きたて塩パンやサクサクのパイ、美術館のようなインテリアが日常を忘れさせます。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] text-slate-400">
+              人気スポット: Onion, Cafe Layered, アーティストベーカリー
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 4: Beauty (Olive Young & Skincare) -->
+        <div class="theme-card-item bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm flex flex-col relative" data-category="beauty">
+          <div class="h-44 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80" alt="K-コスメスキンケア" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+            <button type="button" class="btn-bookmark absolute top-3 right-3 bg-white/90 backdrop-blur-md text-slate-700 hover:text-blue-900 p-1.5 rounded-full border border-slate-200 shadow-sm"
+              data-spot-id="theme_oliveyoung"
+              data-spot-title="オリーブヤング & 美肌スキンケア"
+              data-spot-area="明洞・江南など全土"
+              data-spot-category="K-Beauty"
+              aria-label="マイ旅に保存">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
+            </button>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="badge-tag bg-rose-50 text-rose-800 mb-2">K-Beauty</span>
+              <h4 class="text-base font-bold text-slate-900 mb-1.5">オリーブヤング & 美肌スキンケア</h4>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                韓国No.1ヘルス＆ビューティストア。話題のPDRNセラムや水分パッド、グルタチオンシートマスクなど、日本未発売コスメもその場免税でお得に購入。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] text-slate-400">
+              ワンポイント: 15,000ウォン以上で即時タックスフリー対応
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 5: Beauty (Personal Color & Clinic) -->
+        <div class="theme-card-item bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm flex flex-col relative" data-category="beauty">
+          <div class="h-44 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=600&q=80" alt="ビューティーサロン" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+            <button type="button" class="btn-bookmark absolute top-3 right-3 bg-white/90 backdrop-blur-md text-slate-700 hover:text-blue-900 p-1.5 rounded-full border border-slate-200 shadow-sm"
+              data-spot-id="theme_clinic"
+              data-spot-title="パーソナルカラー診断 & 肌管理"
+              data-spot-area="江南・新沙・明洞"
+              data-spot-category="K-Beauty"
+              aria-label="マイ旅に保存">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
+            </button>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="badge-tag bg-rose-50 text-rose-800 mb-2">K-Beauty</span>
+              <h4 class="text-base font-bold text-slate-900 mb-1.5">パーソナルカラー診断 & 肌管理</h4>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                日本語通訳常駐のサロンや皮膚科クリニックが江南・明洞に多数。毛穴洗浄アクアピールやLDM水玉リフティングなどダウンタイムの少ない施術が人気。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] text-slate-400">
+              予約のコツ: LINE公式アカウントから日本語で事前予約可能
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 6: Culture (Hanbok Rental) -->
+        <div class="theme-card-item bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm flex flex-col relative" data-category="culture">
+          <div class="h-44 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1548115184-bc6544d06a58?auto=format&fit=crop&w=600&q=80" alt="景福宮と韓服体験" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+            <button type="button" class="btn-bookmark absolute top-3 right-3 bg-white/90 backdrop-blur-md text-slate-700 hover:text-blue-900 p-1.5 rounded-full border border-slate-200 shadow-sm"
+              data-spot-id="theme_hanbok"
+              data-spot-title="韓服（チマチョゴリ）レンタル散策"
+              data-spot-area="景福宮・安国"
+              data-spot-category="伝統体験"
+              aria-label="マイ旅に保存">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
+            </button>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="badge-tag bg-indigo-50 text-indigo-800 mb-2">伝統 & 体験</span>
+              <h4 class="text-base font-bold text-slate-900 mb-1.5">韓服（チマチョゴリ）レンタル散策</h4>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                景福宮や昌徳宮周辺では韓服を着用すると古宮への入場料が無料に。ヘアセット込みのプランで、王朝時代にタイムスリップしたような記念写真が残せます。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] text-slate-400">
+              お得情報: 韓服着用者は景福宮・昌徳宮の入場料が無料
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 7: Gourmet (Kanjang Gejang) -->
+        <div class="theme-card-item bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm flex flex-col relative" data-category="gourmet">
+          <div class="h-44 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80" alt="韓国海鮮グルメ" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+            <button type="button" class="btn-bookmark absolute top-3 right-3 bg-white/90 backdrop-blur-md text-slate-700 hover:text-blue-900 p-1.5 rounded-full border border-slate-200 shadow-sm"
+              data-spot-id="theme_gejang"
+              data-spot-title="極上カンジャンケジャン"
+              data-spot-area="新沙洞カンジャンケジャン通り"
+              data-spot-category="K-グルメ"
+              aria-label="マイ旅に保存">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
+            </button>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="badge-tag bg-amber-50 text-amber-800 mb-2">K-グルメ</span>
+              <h4 class="text-base font-bold text-slate-900 mb-1.5">極上カンジャンケジャン</h4>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                「ご飯泥棒（パットドゥッ）」と呼ばれるワタリガニの特製醤油漬け。オレンジ色の内子と濃厚な身をご飯の上に乗せ、韓国海苔とごま油で頬張る至福の味。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] text-slate-400">
+              おすすめエリア: 新沙洞（シンサドン）カンジャンケジャン通り
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 8: Cafe (Traditional Tea & Hanok) -->
+        <div class="theme-card-item bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm flex flex-col relative" data-category="cafe">
+          <div class="h-44 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80" alt="韓屋伝統茶カフェ" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+            <button type="button" class="btn-bookmark absolute top-3 right-3 bg-white/90 backdrop-blur-md text-slate-700 hover:text-blue-900 p-1.5 rounded-full border border-slate-200 shadow-sm"
+              data-spot-id="theme_tea"
+              data-spot-title="仁寺洞 伝統茶院 & 薬菓スイーツ"
+              data-spot-area="仁寺洞・安国駅"
+              data-spot-category="伝統茶カフェ"
+              aria-label="マイ旅に保存">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
+            </button>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="badge-tag bg-emerald-50 text-emerald-800 mb-2">カフェ巡り</span>
+              <h4 class="text-base font-bold text-slate-900 mb-1.5">仁寺洞 伝統茶院 & 薬菓スイーツ</h4>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                オミジャ茶（五味子茶）やナツメ茶、伝統の揚げ菓子「薬菓（ヤックァ）」を静寂漂う中庭付きの韓屋で。歩き疲れた体を優しく癒やしてくれます。
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] text-slate-400">
+              エリア: 地下鉄3号線 安国駅 / 仁寺洞サムジギル周辺
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW SECTION: Essential Travel Korean Phrasebook -->
+  <section id="phrases" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <div class="inline-flex items-center space-x-1 text-blue-900 text-xs font-bold uppercase tracking-widest mb-2 font-en">
+        <span>TRAVEL PHRASEBOOK</span>
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">旅でそのまま使える！指さし韓国語</h2>
+      <p class="text-sm text-slate-500 mt-2">
+        食堂での注文、免税の確認、お会計など、画面を指さして見せるか、ワンクリックでコピーして使える実戦フレーズ集。
+      </p>
+    </div>
+
+    <!-- Phrase Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Phrase 1 -->
+      <div class="phrase-card bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between text-xs text-slate-400 mb-2 font-medium">
+            <span class="bg-blue-50 text-blue-900 px-2.5 py-0.5 rounded-full font-bold">注文・指さし</span>
+            <span>基本フレーズ</span>
+          </div>
+          <div class="text-xl font-black text-slate-900 mb-1">이거 주세요</div>
+          <div class="text-xs text-blue-900 font-bold mb-2">イゴ ジュセヨ</div>
+          <p class="text-xs text-slate-600">日本語訳: これをください（メニューを指さしながら使えます）</p>
+        </div>
+        <button type="button" class="copy-phrase-btn mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 hover:text-blue-900 transition-colors w-full"
+          data-phrase-korean="이거 주세요"
+          data-phrase-jp="これください">
+          <span>タップして韓国語をコピー</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+        </button>
+      </div>
+
+      <!-- Phrase 2 -->
+      <div class="phrase-card bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between text-xs text-slate-400 mb-2 font-medium">
+            <span class="bg-rose-50 text-rose-900 px-2.5 py-0.5 rounded-full font-bold">味付けリクエスト</span>
+            <span>辛さ控えめ</span>
+          </div>
+          <div class="text-xl font-black text-slate-900 mb-1">덜 맵게 해주세요</div>
+          <div class="text-xs text-blue-900 font-bold mb-2">トル メプケ ヘジュセヨ</div>
+          <p class="text-xs text-slate-600">日本語訳: 辛さを控えめにしてください（辛いものが苦手な方必見）</p>
+        </div>
+        <button type="button" class="copy-phrase-btn mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 hover:text-blue-900 transition-colors w-full"
+          data-phrase-korean="덜 맵게 해주세요"
+          data-phrase-jp="辛くしないでください">
+          <span>タップして韓国語をコピー</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+        </button>
+      </div>
+
+      <!-- Phrase 3 -->
+      <div class="phrase-card bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between text-xs text-slate-400 mb-2 font-medium">
+            <span class="bg-amber-50 text-amber-900 px-2.5 py-0.5 rounded-full font-bold">ショッピング</span>
+            <span>免税確認</span>
+          </div>
+          <div class="text-xl font-black text-slate-900 mb-1">택스프리 돼요?</div>
+          <div class="text-xs text-blue-900 font-bold mb-2">テクスプリ デヨ？</div>
+          <p class="text-xs text-slate-600">日本語訳: タックスフリー（免税）になりますか？</p>
+        </div>
+        <button type="button" class="copy-phrase-btn mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 hover:text-blue-900 transition-colors w-full"
+          data-phrase-korean="택스프리 돼요?"
+          data-phrase-jp="タックスフリーになりますか？">
+          <span>タップして韓国語をコピー</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+        </button>
+      </div>
+
+      <!-- Phrase 4 -->
+      <div class="phrase-card bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between text-xs text-slate-400 mb-2 font-medium">
+            <span class="bg-emerald-50 text-emerald-900 px-2.5 py-0.5 rounded-full font-bold">お会計</span>
+            <span>個別会計</span>
+          </div>
+          <div class="text-xl font-black text-slate-900 mb-1">따로따로 계산 돼요?</div>
+          <div class="text-xs text-blue-900 font-bold mb-2">タロタロ ケサン デヨ？</div>
+          <p class="text-xs text-slate-600">日本語訳: 別々に（割り勘で）会計できますか？</p>
+        </div>
+        <button type="button" class="copy-phrase-btn mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 hover:text-blue-900 transition-colors w-full"
+          data-phrase-korean="따로따로 계산 돼요?"
+          data-phrase-jp="別々に会計できますか？">
+          <span>タップして韓国語をコピー</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+        </button>
+      </div>
+
+      <!-- Phrase 5 -->
+      <div class="phrase-card bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between text-xs text-slate-400 mb-2 font-medium">
+            <span class="bg-indigo-50 text-indigo-900 px-2.5 py-0.5 rounded-full font-bold">街歩き・施設</span>
+            <span>場所確認</span>
+          </div>
+          <div class="text-xl font-black text-slate-900 mb-1">화장실이 어디예요?</div>
+          <div class="text-xs text-blue-900 font-bold mb-2">ファジャンシリ オディエヨ？</div>
+          <p class="text-xs text-slate-600">日本語訳: お手洗いはどこですか？（暗証番号が必要な場合あり）</p>
+        </div>
+        <button type="button" class="copy-phrase-btn mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 hover:text-blue-900 transition-colors w-full"
+          data-phrase-korean="화장실이 어디예요?"
+          data-phrase-jp="トイレはどこですか？">
+          <span>タップして韓国語をコピー</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+        </button>
+      </div>
+
+      <!-- Phrase 6 -->
+      <div class="phrase-card bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between text-xs text-slate-400 mb-2 font-medium">
+            <span class="bg-slate-100 text-slate-800 px-2.5 py-0.5 rounded-full font-bold">免税・記録</span>
+            <span>レシート受取</span>
+          </div>
+          <div class="text-xl font-black text-slate-900 mb-1">영수증 주세요</div>
+          <div class="text-xs text-blue-900 font-bold mb-2">ヨンスジュン ジュセヨ</div>
+          <p class="text-xs text-slate-600">日本語訳: レシートをください（空港免税手続きや家計簿に必須）</p>
+        </div>
+        <button type="button" class="copy-phrase-btn mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 hover:text-blue-900 transition-colors w-full"
+          data-phrase-korean="영수증 주세요"
+          data-phrase-jp="領収書をください">
+          <span>タップして韓国語をコピー</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Essential Travel Tips for Japanese Tourists -->
+  <section id="tips" class="py-20 bg-slate-100/50 border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <div class="inline-flex items-center space-x-1 text-blue-900 text-xs font-bold uppercase tracking-widest mb-2 font-en">
+          <span>TRAVEL ESSENTIALS</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">失敗しない！韓国旅行の必須TIPS</h2>
+        <p class="text-sm text-slate-500 mt-2">
+          日本の旅行者が現地で戸惑いやすい「決済・交通・地図・免税」の4大ポイントを分かりやすくまとめました。
+        </p>
+      </div>
+
+      <!-- 4 Essential Tip Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Tip 1: WOWPASS & T-money -->
+        <div class="bg-white rounded-2xl p-7 border border-slate-200 shadow-sm relative overflow-hidden">
+          <div class="flex items-start space-x-4">
+            <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-900 flex items-center justify-center shrink-0">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+              </svg>
+            </div>
+            <div>
+              <span class="text-xs font-bold text-blue-900 tracking-wider font-en uppercase">PAYMENT & TRANSIT</span>
+              <h3 class="text-lg font-bold text-slate-900 mt-0.5 mb-2">WOWPASSと交通カード(T-money)の使い分け</h3>
+              <p class="text-xs text-slate-600 leading-relaxed mb-3">
+                韓国は世界屈指のキャッシュレス社会です。外国人専用プリペイドカード「WOWPASS」なら、仁川空港や主要駅の無人キオスクにて<strong>日本円の現金から直接チャージ</strong>してクレジットカード同様に決済できます。
+              </p>
+              <div class="bg-slate-50 rounded-lg p-3 text-xs text-slate-700 space-y-1.5 border border-slate-100">
+                <div class="font-medium text-slate-900">ここが重要:</div>
+                <div>・買い物決済用残高（WOWPASS）と地下鉄・バス用交通残高（T-money）は財布が分かれています。</div>
+                <div>・交通カード（T-money）のチャージは、地下鉄駅の券売機またはコンビニにて<strong>ウォン現金</strong>で行う必要があります。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tip 2: NAVER Map vs Google Maps -->
+        <div class="bg-white rounded-2xl p-7 border border-slate-200 shadow-sm relative overflow-hidden">
+          <div class="flex items-start space-x-4">
+            <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-800 flex items-center justify-center shrink-0">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+              </svg>
+            </div>
+            <div>
+              <span class="text-xs font-bold text-emerald-800 tracking-wider font-en uppercase">NAVIGATION APP</span>
+              <h3 class="text-lg font-bold text-slate-900 mt-0.5 mb-2">地図は「NAVERマップ」を事前インストール</h3>
+              <p class="text-xs text-slate-600 leading-relaxed mb-3">
+                韓国国内の法規制により、<strong>Googleマップでは徒歩ナビゲーション機能が制限</strong>されています。現地での移動には完全日本語対応の「NAVERマップ（ネイバーマップ）」アプリが必須です。
+              </p>
+              <div class="bg-slate-50 rounded-lg p-3 text-xs text-slate-700 space-y-1.5 border border-slate-100">
+                <div class="font-medium text-slate-900">使い方のポイント:</div>
+                <div>・地下鉄の何両目に乗ると乗り換えが最短かが秒単位で表示されます。</div>
+                <div>・行きたいお店の電話番号や韓国語住所をコピーして検索窓に入れると一発でヒットします。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tip 3: TAX REFUND (免税制度) -->
+        <div class="bg-white rounded-2xl p-7 border border-slate-200 shadow-sm relative overflow-hidden">
+          <div class="flex items-start space-x-4">
+            <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-800 flex items-center justify-center shrink-0">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <div>
+              <span class="text-xs font-bold text-amber-800 tracking-wider font-en uppercase">DUTY FREE SHOPPING</span>
+              <h3 class="text-lg font-bold text-slate-900 mt-0.5 mb-2">タックスフリー（即時還付）で賢くお買い物</h3>
+              <p class="text-xs text-slate-600 leading-relaxed mb-3">
+                1回のお会計が15,000ウォン以上の場合、税金（付加価値税 VAT）の還付対象になります。オリーブヤングや百貨店などの「即時還付対応店」では、レジでパスポートを提示するだけでその場で値引きされます。
+              </p>
+              <div class="bg-slate-50 rounded-lg p-3 text-xs text-slate-700 space-y-1.5 border border-slate-100">
+                <div class="font-medium text-slate-900">事後還付（空港キオスク）の場合:</div>
+                <div>・即時還付されなかった免税レシートは大切に保管し、仁川・金浦空港の出国フロアにある税関キオスクでスキャンして現金またはカードで払い戻しを受けます。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tip 4: Voltage & Plug Adapters -->
+        <div class="bg-white rounded-2xl p-7 border border-slate-200 shadow-sm relative overflow-hidden">
+          <div class="flex items-start space-x-4">
+            <div class="w-12 h-12 rounded-xl bg-rose-50 text-rose-800 flex items-center justify-center shrink-0">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <div>
+              <span class="text-xs font-bold text-rose-800 tracking-wider font-en uppercase">VOLTAGE & PLUGS</span>
+              <h3 class="text-lg font-bold text-slate-900 mt-0.5 mb-2">電圧は220V！丸ピンのSE/Cタイプ変換器</h3>
+              <p class="text-xs text-slate-600 leading-relaxed mb-3">
+                韓国の電圧は220V（60Hz）、コンセント形状は丸い穴が2つある「Cタイプ」または少し太めの「SEタイプ」です。日本の平らな2本ピン（Aタイプ）はそのまま挿せません。
+              </p>
+              <div class="bg-slate-50 rounded-lg p-3 text-xs text-slate-700 space-y-1.5 border border-slate-100">
+                <div class="font-medium text-slate-900">電化製品の確認:</div>
+                <div>・スマートフォンやノートPCの充電器はほとんどが「100V〜240V対応」のため変換プラグのみで利用可能。</div>
+                <div>・日本のヘアアイロンやドライヤーは変圧器がないと故障・発火の恐れがあるため必ず対応電圧を確認してください。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW SECTION: Seasonal Weather & Outfit Guide -->
+  <section id="weather" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <div class="inline-flex items-center space-x-1 text-blue-900 text-xs font-bold uppercase tracking-widest mb-2 font-en">
+        <span>WEATHER & PACKING</span>
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">ソウルの気候・季節別おすすめ服装</h2>
+      <p class="text-sm text-slate-500 mt-2">
+        日本と似ていますが、夏は湿度が高く、冬はマイナス10度を下回る極寒となるソウル。旅行時期に合わせて適切な服装を準備しましょう。
+      </p>
+    </div>
+
+    <!-- Season Tabs -->
+    <div class="flex justify-center mb-8 gap-2">
+      <button type="button" class="season-tab active px-5 py-2.5 rounded-full text-xs font-bold border border-slate-300 shadow-sm transition-all" data-season="spring">
+        春 (3月〜5月)
+      </button>
+      <button type="button" class="season-tab px-5 py-2.5 rounded-full text-xs font-medium border border-slate-300 shadow-sm transition-all" data-season="summer">
+        夏 (6月〜8月)
+      </button>
+      <button type="button" class="season-tab px-5 py-2.5 rounded-full text-xs font-medium border border-slate-300 shadow-sm transition-all" data-season="autumn">
+        秋 (9月〜11月)
+      </button>
+      <button type="button" class="season-tab px-5 py-2.5 rounded-full text-xs font-medium border border-slate-300 shadow-sm transition-all" data-season="winter">
+        冬 (12月〜2月)
+      </button>
+    </div>
+
+    <!-- Season Panels -->
+    <!-- Spring Panel -->
+    <div id="seasonPanel_spring" class="season-panel bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <span class="text-xs font-bold text-emerald-800 uppercase tracking-wider font-en">SPRING SEASON</span>
+          <h3 class="text-xl font-bold text-slate-900 mt-1 mb-2">春（3月〜5月）</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            3月上旬は「コッセムチュウィ（花冷え）」と呼ばれる厳しい冷え込みが残りますが、4月〜5月は桜や新緑が美しい観光のベストシーズンです。
+          </p>
+          <div class="mt-4 inline-block bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 text-xs text-slate-700">
+            平均気温: <strong>5℃ 〜 20℃</strong> (寒暖差大)
+          </div>
+        </div>
+        <div>
+          <h4 class="text-sm font-bold text-slate-900 mb-2">おすすめの服装</h4>
+          <ul class="text-xs text-slate-600 space-y-2 list-disc list-inside">
+            <li>朝晩の冷え込み対策としてトレンチコートやレザージャケット</li>
+            <li>日中は長袖シャツや薄手ニット、カーディガンが便利</li>
+            <li>5月は初夏のような陽気になり半袖＋羽織りものが快適</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-sm font-bold text-slate-900 mb-2">必須の持ち物</h4>
+          <ul class="text-xs text-slate-600 space-y-2 list-disc list-inside">
+            <li>黄砂・PM2.5対策のKF94マスク</li>
+            <li>乾燥を防ぐリップクリーム・ハンドクリーム</li>
+            <li>脱ぎ着しやすいストールやマフラー</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Summer Panel -->
+    <div id="seasonPanel_summer" class="season-panel bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm hidden">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <span class="text-xs font-bold text-rose-800 uppercase tracking-wider font-en">SUMMER SEASON</span>
+          <h3 class="text-xl font-bold text-slate-900 mt-1 mb-2">夏（6月〜8月）</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            6月下旬〜7月は梅雨（チャンマ）でまとまった雨が降り、7月下旬〜8月は35度近い猛暑と高湿度が続きます。カフェや地下街は冷房が強めです。
+          </p>
+          <div class="mt-4 inline-block bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 text-xs text-slate-700">
+            平均気温: <strong>23℃ 〜 34℃</strong> (高温多湿)
+          </div>
+        </div>
+        <div>
+          <h4 class="text-sm font-bold text-slate-900 mb-2">おすすめの服装</h4>
+          <ul class="text-xs text-slate-600 space-y-2 list-disc list-inside">
+            <li>通気性の良い半袖Tシャツ、リネン素材の服</li>
+            <li>地下鉄や店内の強烈な冷房対策に薄手の長袖シャツ</li>
+            <li>突然のゲリラ豪雨でも歩きやすいサンダル・スニーカー</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-sm font-bold text-slate-900 mb-2">必須の持ち物</h4>
+          <ul class="text-xs text-slate-600 space-y-2 list-disc list-inside">
+            <li>晴雨兼用折りたたみ傘</li>
+            <li>日焼け止め・ハンディ扇風機</li>
+            <li>汗拭きシート・冷房除けカーディガン</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Autumn Panel -->
+    <div id="seasonPanel_autumn" class="season-panel bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm hidden">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <span class="text-xs font-bold text-amber-800 uppercase tracking-wider font-en">AUTUMN SEASON</span>
+          <h3 class="text-xl font-bold text-slate-900 mt-1 mb-2">秋（9月〜11月）</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            晴天が続き空気が澄み渡る、年間で最も快適な旅行シーズン。10月中旬〜11月上旬は古宮や南山（Nソウルタワー）の紅葉が見事です。
+          </p>
+          <div class="mt-4 inline-block bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 text-xs text-slate-700">
+            平均気温: <strong>8℃ 〜 22℃</strong> (秋晴れ)
+          </div>
+        </div>
+        <div>
+          <h4 class="text-sm font-bold text-slate-900 mb-2">おすすめの服装</h4>
+          <ul class="text-xs text-slate-600 space-y-2 list-disc list-inside">
+            <li>9月は長袖カットソー、10月はジャケットやニット</li>
+            <li>11月に入ると急速に冷え込むためウールコートや薄手ダウン</li>
+            <li>歩き回る散策に適したスニーカー</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-sm font-bold text-slate-900 mb-2">必須の持ち物</h4>
+          <ul class="text-xs text-slate-600 space-y-2 list-disc list-inside">
+            <li>日中と朝晩の寒暖差を調節できるストール</li>
+            <li>保湿クリーム・目薬（空気が非常に乾燥します）</li>
+            <li>モバイルバッテリー（屋外撮影用）</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Winter Panel -->
+    <div id="seasonPanel_winter" class="season-panel bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm hidden">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <span class="text-xs font-bold text-blue-800 uppercase tracking-wider font-en">WINTER SEASON</span>
+          <h3 class="text-xl font-bold text-slate-900 mt-1 mb-2">冬（12月〜2月）</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            シベリア高気圧の影響で氷点下10度〜15度まで下がる極寒。ただし屋内や地下鉄はオンドル（床暖房）や暖房で非常に暖かく快適です。
+          </p>
+          <div class="mt-4 inline-block bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 text-xs text-slate-700">
+            平均気温: <strong>-10℃ 〜 2℃</strong> (極寒・乾燥)
+          </div>
+        </div>
+        <div>
+          <h4 class="text-sm font-bold text-slate-900 mb-2">おすすめの服装</h4>
+          <ul class="text-xs text-slate-600 space-y-2 list-disc list-inside">
+            <li>膝下まで覆うロングペディン（ロングダウンコート）</li>
+            <li>裏起毛ヒートテックインナーの重ね着</li>
+            <li>風を通さないマフラー、手袋、耳当て</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-sm font-bold text-slate-900 mb-2">必須の持ち物</h4>
+          <ul class="text-xs text-slate-600 space-y-2 list-disc list-inside">
+            <li>貼るカイロ・靴下用カイロ（現地コンビニでも購入可）</li>
+            <li>高保湿リップバーム・ハンドクリーム</li>
+            <li>低温によるバッテリー急速消費対策のモバイル充電器</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Real-Time Currency Calculator (KRW <-> JPY) -->
+  <section id="currency" class="py-16 bg-slate-900 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="bg-slate-800/80 rounded-3xl p-6 sm:p-10 border border-slate-700 shadow-2xl">
+        <div class="text-center max-w-xl mx-auto mb-8">
+          <div class="inline-flex items-center space-x-1.5 text-blue-400 text-xs font-bold tracking-widest uppercase font-en mb-2">
+            <span>CURRENCY CONVERTER</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-bold">韓国ウォン・日本円 かんたん計算機</h2>
+          <p class="text-xs text-slate-400 mt-2">
+            現地のお店での値札感覚をつかむためのシミュレーターです。（目安レート: 100ウォン = 11.2円 / 1ウォン ≒ 0.112円）
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+          <!-- Input Side (KRW) -->
+          <div class="bg-slate-900/90 rounded-2xl p-6 border border-slate-700">
+            <label for="calcKrwInput" class="block text-xs font-medium text-slate-400 mb-2">
+              韓国ウォン金額（KRW）を入力
+            </label>
+            <div class="relative">
+              <input type="text" id="calcKrwInput" value="30000" class="w-full bg-slate-800 text-white text-2xl font-bold px-4 py-3 rounded-xl border border-slate-600 focus:outline-none focus:border-blue-400 transition-colors font-en" placeholder="例: 10000">
+              <span class="absolute right-4 top-1/2 -translate-y-1/2 text-sm font-bold text-slate-400">ウォン (₩)</span>
+            </div>
+
+            <!-- Quick Presets -->
+            <div class="flex flex-wrap gap-2 mt-4">
+              <button type="button" class="calc-preset-btn text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-600 transition-colors" data-amount="10000">1万ウォン</button>
+              <button type="button" class="calc-preset-btn text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-600 transition-colors" data-amount="30000">3万ウォン</button>
+              <button type="button" class="calc-preset-btn text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-600 transition-colors" data-amount="50000">5万ウォン</button>
+              <button type="button" class="calc-preset-btn text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-600 transition-colors" data-amount="100000">10万ウォン</button>
+            </div>
+          </div>
+
+          <!-- Result Side (JPY) -->
+          <div class="bg-gradient-to-br from-blue-950 to-slate-900 rounded-2xl p-6 border border-blue-900/60 flex flex-col justify-center">
+            <div class="text-xs text-blue-300 font-medium mb-1">日本円換算の目安</div>
+            <div class="flex items-baseline space-x-2">
+              <span class="text-xs text-slate-400">約</span>
+              <span id="calcJpyResult" class="text-4xl sm:text-5xl font-black text-white font-en tracking-tight">3,360</span>
+              <span class="text-base font-bold text-blue-400">円</span>
+            </div>
+            <p class="text-[11px] text-slate-400 mt-4 leading-relaxed">
+              ※ 為替市場の変動やカード会社・両替所ごとの手数料（約1.5%〜3%）により実際の請求金額とは若干異なる場合があります。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Travel FAQ & Checklist -->
+  <section id="faq" class="py-20 max-w-4xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center space-x-1 text-blue-900 text-xs font-bold uppercase tracking-widest mb-2 font-en">
+        <span>FREQUENTLY ASKED QUESTIONS</span>
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">よくあるご質問（FAQ）</h2>
+      <p class="text-sm text-slate-500 mt-2">
+        出発前の準備から現地での滞在まで、日本人旅行者から多く寄せられる質問にお答えします。
+      </p>
+    </div>
+
+    <!-- Accordion Container -->
+    <div class="space-y-4">
+      <!-- FAQ 1 -->
+      <div class="faq-item bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
+        <button type="button" class="faq-header w-full text-left p-5 flex items-center justify-between font-bold text-slate-900 hover:bg-slate-50 transition-colors">
+          <span class="text-sm sm:text-base">現在、韓国旅行に入国ビザやK-ETAは必要ですか？</span>
+          <svg class="faq-icon w-5 h-5 text-slate-400 shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7 7"/>
+          </svg>
+        </button>
+        <div class="faq-content px-5 pb-5 text-xs text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+          日本国籍のパスポートをお持ちの方が観光目的で90日以内の滞在をする場合、原則ビザは不要です。また、電子旅行許可制度（K-ETA）についても日本を含む対象国に対して一時免除措置が適用されています。機内で配布される入国申告書を記入すればスムーズに入国できます。
+        </div>
+      </div>
+
+      <!-- FAQ 2 -->
+      <div class="faq-item bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
+        <button type="button" class="faq-header w-full text-left p-5 flex items-center justify-between font-bold text-slate-900 hover:bg-slate-50 transition-colors">
+          <span class="text-sm sm:text-base">現金はいくら両替して持っていくべきですか？</span>
+          <svg class="faq-icon w-5 h-5 text-slate-400 shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7 7"/>
+          </svg>
+        </button>
+        <div class="faq-content px-5 pb-5 text-xs text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+          ほとんどの店舗やタクシーでクレジットカードまたはWOWPASSが使えますが、地下鉄交通カード（T-money）のチャージや市場の屋台、一部のコインロッカーでは現金（ウォン紙幣・硬貨）が必要です。2泊3日の場合、1人あたり約5,000円〜10,000円程度をウォンに両替しておけば十分安心です。
+        </div>
+      </div>
+
+      <!-- FAQ 3 -->
+      <div class="faq-item bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
+        <button type="button" class="faq-header w-full text-left p-5 flex items-center justify-between font-bold text-slate-900 hover:bg-slate-50 transition-colors">
+          <span class="text-sm sm:text-base">現地の通信手段はeSIM、Wi-Fiルーター、SIMカードどれが良いですか？</span>
+          <svg class="faq-icon w-5 h-5 text-slate-400 shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7 7"/>
+          </svg>
+        </button>
+        <div class="faq-content px-5 pb-5 text-xs text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+          SIMフリーかつeSIM対応のスマートフォンをお持ちなら、ルーターの持ち歩きやSIMカードの差し替えが不要な「韓国eSIM」が最も身軽でおすすめです。飲食店の順番待ちアプリ登録などで韓国の携帯電話番号（受信用010番号）が必要な場合は、受信用番号付きのeSIMまたは現地SIMを選ぶと便利です。
+        </div>
+      </div>
+
+      <!-- FAQ 4 -->
+      <div class="faq-item bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
+        <button type="button" class="faq-header w-full text-left p-5 flex items-center justify-between font-bold text-slate-900 hover:bg-slate-50 transition-colors">
+          <span class="text-sm sm:text-base">韓国語が全く話せなくても旅行できますか？</span>
+          <svg class="faq-icon w-5 h-5 text-slate-400 shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7 7"/>
+          </svg>
+        </button>
+        <div class="faq-content px-5 pb-5 text-xs text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+          明洞や東大門、空港などの主要観光地では日本語が通じるスタッフが多く、地下鉄の券売機やキオスク注文機も日本語表示に切り替え可能です。また、当サイトの「指さし韓国語」やPapagoアプリ、韓国観光公社1330電話通訳サービス（年中無休・24時間日本語対応）があるため、言葉の心配なく旅行を楽しめます。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Emergency & Support Banner -->
+  <section class="py-12 bg-blue-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+        <div>
+          <div class="text-xs uppercase tracking-widest text-blue-200 font-en mb-1">EMERGENCY & SUPPORT</div>
+          <h3 class="text-xl font-bold">万が一の時も安心。24時間日本語対応</h3>
+          <p class="text-xs text-blue-100 mt-2 leading-relaxed">
+            パスポートの紛失、道に迷ったとき、タクシーでのトラブルなど、いつでも日本語オペレーターに無料で相談できます。
+          </p>
+        </div>
+        <div class="bg-blue-950/60 rounded-xl p-4 border border-blue-800">
+          <div class="text-xs text-blue-200">韓国観光公社 観光案内ホットライン</div>
+          <div class="text-2xl font-black font-en mt-1">国番なし 1330</div>
+          <div class="text-[11px] text-blue-200 mt-1">年中無休・24時間・日本語通話対応</div>
+        </div>
+        <div class="bg-blue-950/60 rounded-xl p-4 border border-blue-800">
+          <div class="text-xs text-blue-200">各大使館・緊急通報</div>
+          <div class="text-sm font-bold mt-1">犯罪 112 / 救急 119</div>
+          <div class="text-[11px] text-blue-200 mt-1">在大韓民国日本国大使館: 02-739-7400</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-slate-950 text-slate-400 text-xs py-12 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 pb-8 border-b border-slate-800">
+        <div>
+          <div class="flex items-center space-x-2">
+            <span class="w-8 h-8 rounded-lg bg-blue-900 text-white font-bold flex items-center justify-center font-en text-sm">TK</span>
+            <span class="text-base font-bold text-white font-en">TABI KOREA</span>
+          </div>
+          <p class="text-xs text-slate-500 mt-2">
+            日本人旅行者のための韓国公式観光ナビゲーションポータル
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-6 text-xs text-slate-400">
+          <a href="#areas" class="hover:text-white transition-colors">人気エリア</a>
+          <a href="#map" class="hover:text-white transition-colors">観光マップ</a>
+          <a href="#themes" class="hover:text-white transition-colors">テーマ別旅</a>
+          <a href="#phrases" class="hover:text-white transition-colors">指さし韓国語</a>
+          <a href="#tips" class="hover:text-white transition-colors">旅行TIPS</a>
+          <a href="#weather" class="hover:text-white transition-colors">気候・服装</a>
+          <a href="#currency" class="hover:text-white transition-colors">為替計算機</a>
+          <a href="#faq" class="hover:text-white transition-colors">よくある質問</a>
+        </div>
+      </div>
+      <div class="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] text-slate-600">
+        <div>&copy; 2026 TABI KOREA. All rights reserved. Made for Japan Travelers.</div>
+        <div class="flex space-x-4">
+          <span>免責事項: 掲載の店舗情報や為替レートは予告なく変更される場合があります。</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Component (Spot Detail) -->
+  <div id="modalOverlay" class="modal-overlay fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/70 backdrop-blur-sm">
+    <div id="modalBackdrop" class="absolute inset-0"></div>
+    <div class="modal-container relative bg-white rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl z-10 max-h-[90vh] flex flex-col">
+      <!-- Modal Header Image -->
+      <div class="relative h-56 bg-slate-100 shrink-0">
+        <img id="modalSpotImg" src="" alt="" class="w-full h-full object-cover">
+        <button id="closeModalBtn" type="button" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-900/70 text-white flex items-center justify-center hover:bg-slate-900 transition-colors" aria-label="閉じる">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+        <span id="modalSpotCategory" class="absolute bottom-4 left-4 bg-blue-900 text-white text-xs px-3 py-1 rounded-full font-medium"></span>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="p-6 sm:p-8 overflow-y-auto space-y-5">
+        <div>
+          <div id="modalSpotArea" class="text-xs font-semibold text-blue-900 uppercase tracking-wider mb-1"></div>
+          <h3 id="modalSpotTitle" class="text-2xl font-bold text-slate-900"></h3>
+        </div>
+
+        <p id="modalSpotDesc" class="text-sm text-slate-600 leading-relaxed"></p>
+
+        <div class="bg-slate-50 rounded-xl p-4 space-y-3 border border-slate-100 text-xs">
+          <div class="flex items-start space-x-2">
+            <span class="font-bold text-slate-800 shrink-0">最寄り駅:</span>
+            <span id="modalSpotStation" class="text-slate-600"></span>
+          </div>
+          <div class="flex items-start space-x-2">
+            <span class="font-bold text-slate-800 shrink-0">訪問のコツ:</span>
+            <span id="modalSpotTips" class="text-slate-600"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating My Plan Action Button -->
+  <button type="button" id="floatingPlanBtn" class="floating-plan-btn bg-blue-900 text-white px-4 py-3 rounded-full flex items-center space-x-2 border border-blue-700 shadow-xl group">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+    </svg>
+    <span class="text-xs font-bold">マイ旅リスト</span>
+    <span id="planCountBadge" class="bg-rose-500 text-white text-[11px] font-bold w-5 h-5 rounded-full flex items-center justify-center font-en" style="display:none;">0</span>
+  </button>
+
+  <!-- My Plan Slide Drawer -->
+  <div id="planDrawerOverlay" class="plan-drawer-overlay"></div>
+  <aside id="planDrawer" class="plan-drawer flex flex-col justify-between" aria-label="マイ旅リスト">
+    <div class="p-6 border-b border-slate-200 flex items-center justify-between">
+      <div class="flex items-center space-x-2">
+        <svg class="w-5 h-5 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+        </svg>
+        <h4 class="text-lg font-bold text-slate-900">マイ旅プランナー</h4>
+      </div>
+      <button type="button" id="closePlanDrawerBtn" class="p-2 text-slate-400 hover:text-slate-700 rounded-lg" aria-label="閉じる">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Drawer Content Items -->
+    <div class="p-6 overflow-y-auto flex-1 space-y-3">
+      <div id="planEmptyState" class="text-center py-12 text-slate-400 space-y-3">
+        <div class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center mx-auto text-slate-400">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+          </svg>
+        </div>
+        <div class="text-sm font-bold text-slate-700">保存されたスポットはありません</div>
+        <p class="text-xs text-slate-500 max-w-xs mx-auto">
+          各カードの右上にある保存アイコンをクリックすると、ここにお気に入りの旅行リストが作成されます。
+        </p>
+      </div>
+
+      <div id="planItemsList" class="space-y-3"></div>
+    </div>
+
+    <!-- Drawer Footer Actions -->
+    <div id="planActionFooter" class="p-6 border-t border-slate-200 bg-slate-50 space-y-2" style="display: none;">
+      <div class="text-[11px] text-slate-500 mb-2">
+        ※ ブラウザに自動保存されます（次回アクセス時も保持）。
+      </div>
+      <button type="button" id="clearPlanBtn" class="w-full py-2.5 text-xs text-slate-600 hover:text-rose-600 font-medium transition-colors">
+        リストをすべてリセット
+      </button>
+    </div>
+  </aside>
+
+  <!-- Toast Notification Badge -->
+  <div id="toastNotice" class="toast-notice bg-slate-900 text-white text-xs px-4 py-3 rounded-xl shadow-2xl border border-slate-700 flex items-center space-x-2">
+    <svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+    </svg>
+    <span id="toastMessage"></span>
+  </div>
+
+  <!-- Custom Main JS -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
