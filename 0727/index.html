@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>박나온 | Senior Web Architect Portfolio</title>
+<meta name="description" content="산업경영공학의 공정 최적화 방법론을 웹 아키텍처에 접목하는 30년차 웹 아키텍트 박나온의 포트폴리오">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="logo">PARK<span>·</span>NA-ON</div>
+    <nav class="site-nav" aria-label="섹션 이동">
+      <a href="#home" data-index="0" class="active">Home</a>
+      <a href="#about" data-index="1">About</a>
+      <a href="#skills" data-index="2">Skills</a>
+      <a href="#projects" data-index="3">Projects</a>
+      <a href="#career" data-index="4">Career</a>
+      <a href="#contact" data-index="5">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Slide Track -->
+  <div class="track-viewport">
+    <div class="track" id="track">
+
+      <!-- 0. Home -->
+      <section class="slide" id="home">
+        <div class="slide-inner">
+          <div class="eyebrow reveal">WEB ARCHITECT & IE</div>
+          <div class="terminal reveal" role="img" aria-label="터미널 자기소개 애니메이션">
+            <div class="terminal-bar">
+              <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+              <span class="terminal-title">naon@architect: ~</span>
+            </div>
+            <div class="terminal-body" id="typedTerminal" aria-hidden="true"></div>
+          </div>
+          <h1 class="home-title reveal">안녕하세요, <span>박나온</span>입니다.</h1>
+          <p class="home-sub reveal">산업경영공학의 공정 병목 분석과 데이터 중심 최적화 방법론을 웹 엔지니어링에 접목해, 초고배율 트래픽 환경에서도 무장애·고효율을 달성하는 시스템을 설계합니다.</p>
+        </div>
+      </section>
+
+      <!-- 1. About -->
+      <section class="slide" id="about">
+        <div class="slide-inner">
+          <div class="eyebrow reveal">ABOUT & PHILOSOPHY</div>
+          <h2 class="reveal">저를 소개합니다</h2>
+          <div class="about-grid">
+            <div class="reveal">
+              <p>
+                산업경영공학 출신의 30년차 웹 아키텍트입니다. 산업경영공학의 핵심인 '공정 병목 분석'과
+                '데이터 중심 최적화' 방법론을 웹 엔지니어링에 접목하여, 초고배율 트래픽 환경에서도 무장애와
+                최고 효율을 달성하는 웹 시스템을 구축해 왔습니다.
+              </p>
+              <ul class="about-list">
+                <li><span>학력</span><span>산업경영공학과 졸업</span></li>
+                <li><span>개발 경력</span><span>30년 (1996 ~ 현재)</span></li>
+                <li><span>전문 역할</span><span>Senior Web Architect / Tech Lead</span></li>
+                <li><span>주요 분야</span><span>웹 아키텍처, 대용량 트래픽 튜닝, 레거시 모더나이제이션</span></li>
+              </ul>
+            </div>
+            <div class="reveal">
+              <div class="philosophy-item">
+                <h4>01. 공정 병목(Bottleneck) 사전 차단</h4>
+                <p>서버 시스템도 생산 공정 라인과 같습니다. 데이터 처리 흐름의 병목 지점을 공정 분석 기법으로 사전 모니터링해 트래픽 폭주 시 발생하는 서버 멈춤 현상을 원천 차단합니다.</p>
+              </div>
+              <div class="philosophy-item">
+                <h4>02. 데이터 중심 의사결정</h4>
+                <p>직관에 의존한 인프라 증설을 지양합니다. 리소스 사용률·응답 시간·트래픽 패턴을 통계적 품질 관리(SQC) 방법론으로 분석해 최소 비용으로 최대 효율을 유도합니다.</p>
+              </div>
+              <div class="philosophy-item">
+                <h4>03. 결함 전파를 막는 모듈화 설계</h4>
+                <p>하나의 모듈 고장이 전체 서비스 마비로 이어지지 않도록 결합도를 낮추고, 클린 코드와 도메인 주도 설계를 적용해 유지보수가 용이한 모던 아키텍처를 유지합니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Skills -->
+      <section class="slide" id="skills">
+        <div class="slide-inner">
+          <div class="eyebrow reveal">TECHNICAL SKILL MATRIX</div>
+          <h2 class="reveal">기술 스택</h2>
+          <div class="skills-grid">
+            <div class="skill-card reveal" style="--pct:97%">
+              <h4>Backend & Server</h4>
+              <div class="stack">Node.js, Express, Java, Spring Boot, Python, RESTful API, WebSockets</div>
+              <div class="level">Expert · 30년</div>
+              <div class="bar"><div class="bar-fill"></div></div>
+            </div>
+            <div class="skill-card reveal" style="--pct:85%">
+              <h4>Frontend & UI</h4>
+              <div class="stack">HTML5, CSS3, JavaScript(ES6+), Vue.js, React, Dashboard UI</div>
+              <div class="level">Advanced</div>
+              <div class="bar"><div class="bar-fill"></div></div>
+            </div>
+            <div class="skill-card reveal" style="--pct:95%">
+              <h4>Database & Cache</h4>
+              <div class="stack">PostgreSQL, MySQL, Oracle, Redis, Query Optimization, Sharding</div>
+              <div class="level">Expert</div>
+              <div class="bar"><div class="bar-fill"></div></div>
+            </div>
+            <div class="skill-card reveal" style="--pct:85%">
+              <h4>DevOps & Infra</h4>
+              <div class="stack">Linux Server, Docker, AWS, CI/CD Pipeline, Nginx, Load Balancing</div>
+              <div class="level">Advanced</div>
+              <div class="bar"><div class="bar-fill"></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Projects -->
+      <section class="slide" id="projects">
+        <div class="slide-inner">
+          <div class="eyebrow reveal">MAJOR ACCOMPLISHMENTS</div>
+          <h2 class="reveal">주요 프로젝트 성과</h2>
+          <div class="project-list">
+            <article class="project-card reveal">
+              <div class="meta-row">
+                <h3>스마트 공장 대시보드</h3>
+                <span class="period">2022 ~ 2024</span>
+              </div>
+              <div class="row">
+                <div class="box"><div class="k">Problem</div><div class="v">초당 10만 건 데이터 처리 지연으로 모니터링 차질</div></div>
+                <div class="box"><div class="k">Solution</div><div class="v">Node.js WebSocket 파이프라인 및 Redis 캐싱 도입</div></div>
+                <div class="box"><div class="k">Impact</div><div class="v impact">데이터 지연 85%↓ · 공정 가동률 12%↑</div></div>
+              </div>
+            </article>
+
+            <article class="project-card reveal">
+              <div class="meta-row">
+                <h3>대용량 E-Commerce 튜닝</h3>
+                <span class="period">2018 ~ 2020</span>
+              </div>
+              <div class="row">
+                <div class="box"><div class="k">Problem</div><div class="v">피크 타임(DAU 500만) 접속 폭주 시 DB 과부하 발생</div></div>
+                <div class="box"><div class="k">Solution</div><div class="v">대기행렬 이론 기반 Queue 구축 및 DB Read/Write 분리</div></div>
+                <div class="box"><div class="k">Impact</div><div class="v impact">장애 발생률 0% 달성 · 인프라 비용 30%↓</div></div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Career -->
+      <section class="slide" id="career">
+        <div class="slide-inner">
+          <div class="eyebrow reveal">CAREER HISTORY</div>
+          <h2 class="reveal">경력 타임라인</h2>
+          <div class="timeline reveal">
+            <div class="timeline-item">
+              <div class="when">2015 — 현재</div>
+              <h4>수석 웹 아키텍트 (Principal Architect)</h4>
+              <p>대규모 엔터프라이즈 웹 아키텍처 컨설팅 및 시스템 총괄 설계, 대용량 트래픽 병목 해소를 위한 서버 튜닝 및 개발팀 기술 리딩</p>
+            </div>
+            <div class="timeline-item">
+              <div class="when">2005 — 2015</div>
+              <h4>선임 시스템 엔지니어 (Senior Engineer)</h4>
+              <p>산업용 ERP 및 SCM 웹 솔루션 핵심 아키텍처 설계, 분산 데이터베이스 구축 및 웹 표준화 고도화 프로젝트 주도</p>
+            </div>
+            <div class="timeline-item">
+              <div class="when">1996 — 2005</div>
+              <h4>풀스택 웹 개발자 (Full Stack Dev)</h4>
+              <p>초기 인터넷 업무 시스템 설계 및 데이터베이스 연동 개발, 서버 사이드 스크립트 및 CGI/DB 기반 서비스 구축</p>
+            </div>
+            <div class="timeline-item">
+              <div class="when">학력</div>
+              <h4>산업경영공학과 졸업 (B.S. in IE)</h4>
+              <p>생산 및 공정 프로세스 최적화, 통계적 품질 관리(SQC), 시스템 공학 전공</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Contact -->
+      <section class="slide" id="contact">
+        <div class="slide-inner">
+          <div class="eyebrow reveal">CONTACT & COLLABORATION</div>
+          <h2 class="reveal">함께 이야기 나눠요</h2>
+          <p class="reveal" style="color:var(--text-dim); font-size:0.9rem; margin-top:-16px; margin-bottom:24px;">기술 자문, 웹 아키텍처 리뷰 및 프로젝트 협업 제안은 언제나 환영합니다.</p>
+          <div class="contact-grid reveal">
+            <div class="contact-card">
+              <div class="label">EMAIL</div>
+              <div class="value">hena9713@naver.com</div>
+            </div>
+            <div class="contact-card">
+              <div class="label">PHONE</div>
+              <div class="value">010-5009-9713</div>
+            </div>
+            <div class="contact-card">
+              <div class="label">MAJOR</div>
+              <div class="value">산업경영공학과 졸업</div>
+            </div>
+            <div class="contact-card">
+              <div class="label">ROLE</div>
+              <div class="value">Senior Web Architect</div>
+            </div>
+          </div>
+          <p class="footer-note reveal">© 2026 Park Na-On. Renewed from the 0723 portfolio — vanilla HTML/CSS/JS.</p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Prev / Next Arrows -->
+  <div class="slide-nav left">
+    <button type="button" class="nav-arrow" id="prevBtn" aria-label="이전 섹션으로 이동">←</button>
+  </div>
+  <div class="slide-nav right">
+    <button type="button" class="nav-arrow" id="nextBtn" aria-label="다음 섹션으로 이동">→</button>
+  </div>
+
+  <!-- Progress Dots -->
+  <div class="progress-dots" id="progressDots" role="tablist" aria-label="섹션 인디케이터"></div>
+
+  <script>
+  (function () {
+    var track = document.getElementById('track');
+    var slides = Array.prototype.slice.call(track.children);
+    var navLinks = Array.prototype.slice.call(document.querySelectorAll('.site-nav a'));
+    var dotsWrap = document.getElementById('progressDots');
+    var prevBtn = document.getElementById('prevBtn');
+    var nextBtn = document.getElementById('nextBtn');
+    var current = 0;
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // build progress dots
+    slides.forEach(function (s, i) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', (i + 1) + '번째 섹션(' + s.id + ')으로 이동');
+      if (i === 0) b.classList.add('active');
+      b.addEventListener('click', function () { goTo(i); });
+      dotsWrap.appendChild(b);
+    });
+    var dots = Array.prototype.slice.call(dotsWrap.children);
+
+    function goTo(i) {
+      i = Math.max(0, Math.min(slides.length - 1, i));
+      current = i;
+      track.style.transform = 'translateX(-' + (i * 100) + 'vw)';
+
+      navLinks.forEach(function (a, idx) { a.classList.toggle('active', idx === i); });
+      dots.forEach(function (d, idx) { d.classList.toggle('active', idx === i); });
+
+      prevBtn.disabled = i === 0;
+      nextBtn.disabled = i === slides.length - 1;
+
+      slides[i].querySelector('.slide-inner').setAttribute('tabindex', '-1');
+    }
+
+    prevBtn.addEventListener('click', function () { goTo(current - 1); });
+    nextBtn.addEventListener('click', function () { goTo(current + 1); });
+
+    navLinks.forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        goTo(parseInt(a.getAttribute('data-index'), 10));
+      });
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') goTo(current + 1);
+      if (e.key === 'ArrowLeft') goTo(current - 1);
+    });
+
+    // basic swipe support for touch devices
+    var touchStartX = null;
+    track.addEventListener('touchstart', function (e) { touchStartX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', function (e) {
+      if (touchStartX === null) return;
+      var dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 60) goTo(current + (dx < 0 ? 1 : -1));
+      touchStartX = null;
+    }, { passive: true });
+
+    goTo(0);
+
+    // ---------------- Reveal on scroll ----------------
+    var revealEls = document.querySelectorAll('.reveal, .skill-card');
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      }, { threshold: 0.25 });
+      revealEls.forEach(function (el) { io.observe(el); });
+    } else {
+      revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+    }
+
+    // ---------------- Terminal typing effect ----------------
+    var lines = [
+      { prompt: '$ whoami', typed: '박나온 — Senior Web Architect (30년차)' },
+      { prompt: '$ major', typed: '산업경영공학과 졸업 · IE 기반 웹 엔지니어링' },
+      { prompt: '$ status', typed: 'Available for architecture consulting ✔' }
+    ];
+    var termEl = document.getElementById('typedTerminal');
+
+    function typeLines() {
+      if (reduceMotion) {
+        termEl.innerHTML = lines.map(function (l) {
+          return '<div><span class="prompt">' + l.prompt + '</span><br><span class="typed">' + l.typed + '</span></div>';
+        }).join('');
+        return;
+      }
+
+      var li = 0;
+
+      function typeOneLine() {
+        if (li >= lines.length) return;
+        var line = lines[li];
+        var row = document.createElement('div');
+        var promptSpan = document.createElement('span');
+        promptSpan.className = 'prompt';
+        promptSpan.textContent = line.prompt;
+        var br = document.createElement('br');
+        var typedSpan = document.createElement('span');
+        typedSpan.className = 'typed';
+        var cursor = document.createElement('span');
+        cursor.className = 'cursor';
+
+        row.appendChild(promptSpan);
+        row.appendChild(br);
+        row.appendChild(typedSpan);
+        row.appendChild(cursor);
+        termEl.appendChild(row);
+
+        var ci = 0;
+        var text = line.typed;
+        var interval = setInterval(function () {
+          typedSpan.textContent = text.slice(0, ci + 1);
+          ci++;
+          if (ci >= text.length) {
+            clearInterval(interval);
+            cursor.remove();
+            li++;
+            setTimeout(typeOneLine, 220);
+          }
+        }, 34);
+      }
+      typeOneLine();
+    }
+
+    // start typing once the home terminal is visible
+    if ('IntersectionObserver' in window) {
+      var termIo = new IntersectionObserver(function (entries, obs) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            typeLines();
+            obs.disconnect();
+          }
+        });
+      }, { threshold: 0.3 });
+      termIo.observe(document.getElementById('home'));
+    } else {
+      typeLines();
+    }
+  })();
+  </script>
+</body>
+</html>
