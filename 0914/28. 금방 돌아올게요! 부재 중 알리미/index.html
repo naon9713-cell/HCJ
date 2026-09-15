@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>자리 비움 안내</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===================== 설정 화면 ===================== -->
+<section id="setupScreen" class="screen active">
+  <div class="setup-card">
+    <h1 class="setup-title">🪑 자리 비움 안내</h1>
+    <p class="setup-desc">자리를 비울 때 화면에 표시할 정보를 입력해 주세요.</p>
+
+    <form id="setupForm">
+      <div class="field">
+        <label for="scheduleInput">일정 <span class="req">*</span></label>
+        <input type="text" id="scheduleInput" placeholder="예) 회의중입니다" maxlength="40" required>
+      </div>
+
+      <div class="field">
+        <label>언제 돌아오나요? <span class="req">*</span></label>
+        <div class="toggle-group">
+          <button type="button" class="toggle-btn active" data-mode="time">특정 시각</button>
+          <button type="button" class="toggle-btn" data-mode="duration">몇 분 후</button>
+        </div>
+
+        <div id="timeModeBox" class="mode-box">
+          <input type="time" id="returnTimeInput">
+        </div>
+
+        <div id="durationModeBox" class="mode-box hidden">
+          <div class="duration-row">
+            <div class="duration-item">
+              <input type="number" id="durationHours" min="0" max="23" value="0">
+              <span>시간</span>
+            </div>
+            <div class="duration-item">
+              <input type="number" id="durationMinutes" min="0" max="59" value="10">
+              <span>분</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="noteInput">기타 안내 문구 <span class="optional">(선택)</span></label>
+        <textarea id="noteInput" rows="3" maxlength="200" placeholder="예) 급한 일은 010-0000-0000으로 연락주세요"></textarea>
+      </div>
+
+      <p id="errorMsg" class="error-msg hidden"></p>
+
+      <button type="submit" class="start-btn">화면 표시 시작하기 ▶</button>
+    </form>
+  </div>
+</section>
+
+<!-- ===================== 표시 화면 ===================== -->
+<section id="displayScreen" class="screen hidden">
+  <div class="top-bar">
+    <div id="nowClock" class="now-clock">--:--:--</div>
+    <div id="nowDate" class="now-date">----년 --월 --일</div>
+  </div>
+
+  <div class="display-content">
+    <div class="schedule-label">현재 상태</div>
+    <h1 id="scheduleText" class="schedule-text">일정 없음</h1>
+
+    <div class="info-row">
+      <div class="info-box">
+        <div class="info-label">돌아오는 시간</div>
+        <div id="returnTimeText" class="info-value">--:--</div>
+      </div>
+      <div class="info-box highlight">
+        <div class="info-label" id="countdownLabel">남은 시간</div>
+        <div id="countdownText" class="info-value countdown">00:00:00</div>
+      </div>
+    </div>
+
+    <p id="noteText" class="note-text hidden"></p>
+  </div>
+
+  <div class="bottom-bar">
+    <button id="fullscreenBtn" class="icon-btn" title="전체화면">⛶ 전체화면</button>
+    <button id="editBtn" class="icon-btn" title="설정 변경">⚙ 설정 변경</button>
+  </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>오디오 편집기</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <h1>🎧 오디오 편집기</h1>
+      <p class="subtitle">MP3, WAV 파일을 업로드해서 포맷 변환 · 볼륨 조절 · 구간 자르기를 해보세요</p>
+    </header>
+
+    <!-- 업로드 화면 -->
+    <section id="upload-screen" class="screen">
+      <div id="dropzone" class="dropzone">
+        <div class="dropzone-icon">🎵</div>
+        <p class="dropzone-text">오디오 파일을 드래그하거나 클릭해서 업로드하세요</p>
+        <p class="dropzone-hint">MP3, WAV, OGG, M4A, AAC, FLAC (최대 100MB)</p>
+        <input type="file" id="file-input" accept="audio/*,.mp3,.wav,.ogg,.m4a,.aac,.flac" hidden>
+      </div>
+      <p id="upload-error" class="error-text" hidden></p>
+    </section>
+
+    <!-- 로딩 화면 -->
+    <section id="loading-screen" class="screen" hidden>
+      <div class="loader"></div>
+      <p id="loading-text">오디오를 분석하는 중...</p>
+    </section>
+
+    <!-- 편집 화면 -->
+    <section id="editor-screen" class="screen" hidden>
+      <div class="file-info-bar">
+        <span id="file-name" class="file-name"></span>
+        <span id="file-meta" class="file-meta"></span>
+        <button id="btn-reset" class="btn-text">✕ 새 파일 선택</button>
+      </div>
+
+      <!-- 파형 + 트림 -->
+      <div class="panel">
+        <h2>✂️ 구간 자르기 (Trim)</h2>
+        <div class="waveform-wrap">
+          <canvas id="waveform" height="120"></canvas>
+          <div id="trim-overlay" class="trim-overlay">
+            <div id="trim-region" class="trim-region"></div>
+            <div id="handle-start" class="trim-handle handle-start" tabindex="0"></div>
+            <div id="handle-end" class="trim-handle handle-end" tabindex="0"></div>
+            <div id="playhead" class="playhead"></div>
+          </div>
+        </div>
+        <div class="trim-info">
+          <span>시작: <strong id="trim-start-label">0:00.0</strong></span>
+          <span>끝: <strong id="trim-end-label">0:00.0</strong></span>
+          <span>길이: <strong id="trim-duration-label">0:00.0</strong></span>
+          <button id="btn-reset-trim" class="btn-mini">전체 선택</button>
+        </div>
+        <div class="playback-controls">
+          <button id="btn-play-full" class="btn-secondary">▶ 전체 재생</button>
+          <button id="btn-play-selection" class="btn-secondary">▶ 선택 구간만 미리듣기</button>
+          <button id="btn-stop" class="btn-secondary" disabled>⏹ 정지</button>
+        </div>
+      </div>
+
+      <!-- 볼륨 -->
+      <div class="panel">
+        <h2>🔊 볼륨 조절</h2>
+        <div class="volume-row">
+          <input type="range" id="volume-slider" min="0" max="200" value="100" step="1">
+          <span id="volume-label" class="volume-label">100%</span>
+        </div>
+        <p id="clipping-warning" class="warning-text" hidden>⚠️ 이 볼륨에서는 소리가 찌그러질(클리핑) 수 있습니다.</p>
+      </div>
+
+      <!-- 포맷 변환 -->
+      <div class="panel">
+        <h2>🔄 포맷 변환</h2>
+        <div class="format-options">
+          <label class="format-card">
+            <input type="radio" name="format" value="wav" checked>
+            <span class="format-card-body">
+              <strong>WAV</strong>
+              <small>무손실, 용량 큼</small>
+            </span>
+          </label>
+          <label class="format-card">
+            <input type="radio" name="format" value="mp3">
+            <span class="format-card-body">
+              <strong>MP3</strong>
+              <small>압축, 용량 작음</small>
+            </span>
+          </label>
+        </div>
+        <div id="mp3-bitrate-row" class="bitrate-row" hidden>
+          <label for="mp3-bitrate">비트레이트</label>
+          <select id="mp3-bitrate">
+            <option value="128">128 kbps (보통)</option>
+            <option value="192" selected>192 kbps (좋음)</option>
+            <option value="320">320 kbps (최고)</option>
+          </select>
+        </div>
+      </div>
+
+      <button id="btn-export" class="btn-primary btn-large">💾 적용해서 다운로드</button>
+    </section>
+
+    <!-- 내보내기 진행 화면 -->
+    <section id="export-screen" class="screen" hidden>
+      <div class="loader"></div>
+      <p id="export-status">처리 중...</p>
+      <div class="progress-bar-outer"><div id="export-progress" class="progress-bar-inner"></div></div>
+    </section>
+
+    <!-- 완료 화면 -->
+    <section id="done-screen" class="screen" hidden>
+      <div class="done-icon">✅</div>
+      <h2>완료되었습니다!</h2>
+      <p id="done-file-info" class="done-file-info"></p>
+      <audio id="done-audio-preview" controls></audio>
+      <div class="done-buttons">
+        <a id="btn-download" class="btn-primary" download>⬇ 다운로드</a>
+        <button id="btn-edit-more" class="btn-secondary">✎ 이어서 편집하기</button>
+        <button id="btn-new-file" class="btn-text">새 파일로 시작하기</button>
+      </div>
+    </section>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lamejs/1.2.1/lame.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

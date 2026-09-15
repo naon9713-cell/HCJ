@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>🎯 대포 추첨기</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-container">
+
+  <!-- ===== Screen 1: 이름 입력 ===== -->
+  <section id="screen-input" class="screen active">
+    <div class="input-card">
+      <h1>🎯 대포 추첨기</h1>
+      <p class="subtitle">구슬을 대포로 발사해서, 장애물을 뚫고<br>가장 마지막에 멈추는 사람이 당첨됩니다!</p>
+
+      <div class="name-input-row">
+        <input id="name-input" type="text" placeholder="이름을 입력하고 Enter" maxlength="12">
+        <button id="add-name-btn">추가</button>
+      </div>
+
+      <div id="name-empty-msg" class="empty-msg">아직 등록된 이름이 없어요. 이름을 입력해 추가해 보세요!</div>
+      <ul id="name-list"></ul>
+
+      <div class="count-row">
+        <span id="name-count">0명 등록됨</span>
+        <button id="clear-all-btn" class="text-btn">전체 삭제</button>
+      </div>
+
+      <button id="start-btn" disabled>🚀 추첨 시작 (최소 2명)</button>
+    </div>
+  </section>
+
+  <!-- ===== Screen 2: 게임 화면 ===== -->
+  <section id="screen-game" class="screen">
+    <div class="game-top-bar">
+      <div id="progress-text">발사 준비중...</div>
+      <button id="skip-btn" class="text-btn light">⏭ 결과 건너뛰기(빠르게 보기)</button>
+    </div>
+
+    <div class="game-body">
+      <div class="canvas-wrap">
+        <canvas id="game-canvas" width="800" height="1000"></canvas>
+      </div>
+      <aside class="ranking-panel">
+        <h3>🏁 도착 순서</h3>
+        <ol id="ranking-list"></ol>
+        <p class="ranking-hint">가장 마지막에 도착하는 사람이<br><b>당첨자</b>입니다 🎉</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===== Screen 3: 결과 ===== -->
+  <section id="screen-result" class="screen">
+    <div id="confetti-container"></div>
+    <div class="result-card">
+      <div class="result-badge">🎉 당첨 🎉</div>
+      <div id="winner-name">-</div>
+      <div id="result-sub">가장 마지막에 도착했습니다!</div>
+
+      <div class="final-ranking">
+        <h4>전체 도착 순서</h4>
+        <ol id="final-ranking-list"></ol>
+      </div>
+
+      <div class="result-buttons">
+        <button id="replay-same-btn">🔄 같은 명단으로 다시 추첨</button>
+        <button id="restart-btn">✏️ 새로 입력하기</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.20.0/matter.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

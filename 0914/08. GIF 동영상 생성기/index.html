@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video to GIF</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 헤더 -->
+  <header class="header">
+    <a href="http://nanalab.kr" target="_blank" class="logo-link" id="logoLink">
+      <img src="logo.png" alt="logo" class="logo-img" id="logoImg">
+    </a>
+    <h1 class="header-title">Video to GIF</h1>
+  </header>
+
+  <!-- 메인 -->
+  <main class="main">
+    <div class="title-area">
+      <h2 class="big-title">Video <span class="arrow">&rarr;</span> GIF</h2>
+      <p class="sub-title">Make your own GIF Animation!</p>
+    </div>
+
+    <!-- 옵션 패널 -->
+    <div class="options-panel">
+      <div class="option-item">
+        <label for="widthInput">GIF 너비 (px)</label>
+        <input type="number" id="widthInput" value="320" min="50" max="1280">
+      </div>
+      <div class="option-item">
+        <label for="durationInput">재생 구간 (초, 0=전체)</label>
+        <input type="number" id="durationInput" value="5" min="0" max="60">
+      </div>
+      <div class="option-item">
+        <label for="fpsInput">FPS (최대 29)</label>
+        <input type="number" id="fpsInput" value="15" min="1" max="29">
+      </div>
+    </div>
+
+    <!-- 드래그 앤 드롭 업로드 영역 -->
+    <div class="dropzone" id="dropzone">
+      <div class="dropzone-icon">🎬</div>
+      <p class="dropzone-text">여기에 동영상 파일을 드래그 앤 드롭하세요</p>
+      <p class="dropzone-sub">또는</p>
+      <button class="upload-btn" id="uploadBtn">파일 업로드</button>
+      <input type="file" id="fileInput" accept="video/*" multiple hidden>
+    </div>
+
+    <!-- 파일 목록 -->
+    <section class="file-list" id="fileList"></section>
+  </main>
+
+  <!-- 숨겨진 처리용 요소 -->
+  <video id="hiddenVideo" style="display:none;" muted playsinline></video>
+  <canvas id="hiddenCanvas" style="display:none;"></canvas>
+
+  <!-- gif.js 라이브러리 (CDN) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gif.js/0.2.0/gif.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

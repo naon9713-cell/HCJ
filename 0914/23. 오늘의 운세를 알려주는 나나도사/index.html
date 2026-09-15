@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>오늘의 운세 | 오행으로 보는 하루</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="bg-decor" id="bgDecor"></div>
+
+<div class="app">
+
+  <header class="app-header">
+    <h1>🔮 오늘의 운세</h1>
+    <p class="subtitle">이름과 생년월일, 그리고 오행의 기운으로 오늘 하루를 점쳐보세요</p>
+  </header>
+
+  <!-- STEP 1: 정보 입력 -->
+  <section class="screen active" id="screen1">
+    <div class="card form-card">
+      <h2 class="step-title"><span class="step-num">1</span> 나의 정보 입력</h2>
+
+      <div class="field">
+        <label for="nameInput">이름</label>
+        <input type="text" id="nameInput" placeholder="예: 홍길동" maxlength="12">
+      </div>
+
+      <div class="field">
+        <label for="birthInput">생년월일</label>
+        <input type="date" id="birthInput">
+      </div>
+
+      <div class="field">
+        <label>성별</label>
+        <div class="radio-group">
+          <label class="radio-pill">
+            <input type="radio" name="gender" value="male" checked>
+            <span>남성</span>
+          </label>
+          <label class="radio-pill">
+            <input type="radio" name="gender" value="female">
+            <span>여성</span>
+          </label>
+          <label class="radio-pill">
+            <input type="radio" name="gender" value="none">
+            <span>선택 안함</span>
+          </label>
+        </div>
+      </div>
+
+      <p class="error-msg" id="step1Error"></p>
+
+      <button class="btn-primary" id="toStep2Btn">다음 →</button>
+    </div>
+  </section>
+
+  <!-- STEP 2: 오행 선택 -->
+  <section class="screen" id="screen2">
+    <div class="card">
+      <h2 class="step-title"><span class="step-num">2</span> 오늘의 기운을 선택하세요</h2>
+      <p class="step-desc">직관적으로 마음이 끌리는 오행 하나를 골라보세요</p>
+
+      <div class="element-grid" id="elementGrid">
+        <button class="element-card" data-element="fire">
+          <span class="element-icon">🔥</span>
+          <span class="element-name">불</span>
+          <span class="element-en">Fire</span>
+        </button>
+        <button class="element-card" data-element="water">
+          <span class="element-icon">💧</span>
+          <span class="element-name">물</span>
+          <span class="element-en">Water</span>
+        </button>
+        <button class="element-card" data-element="wood">
+          <span class="element-icon">🌳</span>
+          <span class="element-name">나무</span>
+          <span class="element-en">Wood</span>
+        </button>
+        <button class="element-card" data-element="earth">
+          <span class="element-icon">⛰️</span>
+          <span class="element-name">땅</span>
+          <span class="element-en">Earth</span>
+        </button>
+        <button class="element-card" data-element="wind">
+          <span class="element-icon">🌪️</span>
+          <span class="element-name">바람</span>
+          <span class="element-en">Wind</span>
+        </button>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn-secondary" id="toStep1Btn">← 이전</button>
+        <button class="btn-primary" id="toResultBtn" disabled>오늘의 운세 보기 ✨</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 3: 결과 -->
+  <section class="screen" id="screen3">
+    <div class="card result-card" id="resultCard">
+      <div class="result-header" id="resultHeader">
+        <span class="result-element-icon" id="resultElementIcon">🔥</span>
+        <div>
+          <h2 id="resultGreeting">홍길동님의 오늘의 운세</h2>
+          <p id="resultDate" class="result-date">2026년 9월 15일</p>
+        </div>
+      </div>
+
+      <div class="total-fortune" id="totalFortune">
+        <h3>✨ 총운</h3>
+        <p id="totalFortuneText">운세 내용이 여기에 표시됩니다.</p>
+      </div>
+
+      <div class="fortune-categories" id="fortuneCategories">
+        <!-- JS로 채워짐 -->
+      </div>
+
+      <div class="lucky-box" id="luckyBox">
+        <h3>🍀 오늘의 행운 아이템</h3>
+        <div class="lucky-grid" id="luckyGrid">
+          <!-- JS로 채워짐 -->
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn-secondary" id="restartBtn">🔄 처음부터 다시하기</button>
+        <button class="btn-primary" id="reshuffleBtn">🎲 다른 기운으로 보기</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

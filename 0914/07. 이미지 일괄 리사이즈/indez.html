@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Image Resizer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <a class="logo-link" href="https://nanalab.kr" target="_blank" rel="noopener">
+            <img src="logo.png" alt="나나컴퍼니 로고"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+            <span class="logo-fallback" style="display:none; font-weight:800; color:var(--brown);">🐶 나나컴퍼니</span>
+        </a>
+        <div class="title">Smart <span>Image</span> Resizer</div>
+    </header>
+
+    <main>
+        <!-- 1. 업로드 영역 -->
+        <div class="dropzone" id="dropzone">
+            <h1>이미지를 드래그하거나 업로드하세요</h1>
+            <button class="upload-btn" id="uploadBtn" type="button">📁 파일 선택하기</button>
+            <input type="file" id="fileInput" multiple accept="image/*">
+            <p class="hint">JPG, PNG, WEBP, GIF, BMP 등 이미지 파일 지원 (여러 장 동시 업로드 가능)</p>
+        </div>
+
+        <!-- 2. 설정 패널 (파일 업로드 후 표시) -->
+        <section class="settings-panel" id="settingsPanel">
+            <h2>⚙️ 변환 설정</h2>
+
+            <div class="setting-group">
+                <label class="setting-label">캔버스 비율</label>
+                <div class="ratio-buttons" id="ratioButtons">
+                    <button class="ratio-btn active" data-w="1" data-h="1" type="button">1:1</button>
+                    <button class="ratio-btn" data-w="3" data-h="4" type="button">3:4</button>
+                    <button class="ratio-btn" data-w="4" data-h="3" type="button">4:3</button>
+                    <button class="ratio-btn" data-w="9" data-h="16" type="button">9:16</button>
+                    <button class="ratio-btn" data-w="16" data-h="9" type="button">16:9</button>
+                    <button class="ratio-btn" id="customRatioBtn" type="button">커스텀</button>
+                </div>
+                <div class="custom-ratio-inputs" id="customRatioInputs">
+                    <input type="number" id="customW" min="1" value="1" placeholder="W">
+                    <span>:</span>
+                    <input type="number" id="customH" min="1" value="1" placeholder="H">
+                </div>
+            </div>
+
+            <div class="setting-group">
+                <label class="setting-label">변환 방식</label>
+                <div class="mode-buttons">
+                    <button class="mode-btn active" id="paddingModeBtn" type="button">🖼️ Padding (여백 추가)</button>
+                    <button class="mode-btn" id="cropModeBtn" type="button">✂️ Crop (잘라내기)</button>
+                </div>
+            </div>
+
+            <div class="setting-group" id="colorGroup">
+                <label class="setting-label">여백 색상</label>
+                <div class="color-row">
+                    <input type="color" id="padColor" value="#ffffff">
+                    <span id="colorValueText">#FFFFFF</span>
+                </div>
+            </div>
+
+            <button class="apply-btn" id="applyBtn" type="button">🚀 변환 시작</button>
+        </section>
+
+        <!-- 3. 파일 목록 -->
+        <div class="file-list" id="fileList"></div>
+
+        <!-- 4. 일괄 다운로드 -->
+        <button class="bulk-download-btn" id="bulkDownloadBtn" type="button" disabled>
+            📦 전체 ZIP 다운로드
+        </button>
+    </main>
+
+    <!-- ✅ JSZip을 로컬 파일로 내장 (CDN 미사용 → 인터넷 연결 불필요) -->
+    <script src="jszip.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

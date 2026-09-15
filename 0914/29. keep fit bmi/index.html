@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BMI 계산기</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <h1>⚖️ BMI 계산기</h1>
+      <p class="subtitle">키·몸무게·성별을 입력하면 BMI와 목표 체중을 알려드려요</p>
+    </header>
+
+    <!-- 입력 화면 -->
+    <section id="input-screen" class="card">
+      <div class="field">
+        <label for="gender">성별</label>
+        <div class="gender-toggle">
+          <button type="button" class="gender-btn active" data-gender="male">👨 남성</button>
+          <button type="button" class="gender-btn" data-gender="female">👩 여성</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="height">키 (cm)</label>
+        <input type="number" id="height" placeholder="예: 170" min="50" max="250" step="0.1" inputmode="decimal">
+      </div>
+
+      <div class="field">
+        <label for="weight">몸무게 (kg)</label>
+        <input type="number" id="weight" placeholder="예: 65" min="10" max="300" step="0.1" inputmode="decimal">
+      </div>
+
+      <p id="error-msg" class="error-msg" hidden></p>
+
+      <button id="calc-btn" class="primary-btn">BMI 계산하기</button>
+    </section>
+
+    <!-- 결과 화면 -->
+    <section id="result-screen" class="card" hidden>
+      <div class="bmi-summary">
+        <div class="bmi-value-wrap">
+          <span class="label">내 BMI</span>
+          <span id="bmi-value" class="bmi-value">0.0</span>
+        </div>
+        <span id="bmi-category" class="category-badge">-</span>
+      </div>
+
+      <div class="info-row">
+        <div class="info-box">
+          <span class="info-label">입력 정보</span>
+          <span id="info-detail" class="info-value">-</span>
+        </div>
+        <div class="info-box">
+          <span class="info-label">표준체중 (비만도 100%)</span>
+          <span id="standard-weight" class="info-value">-</span>
+        </div>
+        <div class="info-box">
+          <span class="info-label">현재 비만도</span>
+          <span id="obesity-pct" class="info-value">-</span>
+        </div>
+      </div>
+
+      <h2 class="section-title">🎯 비만도 기준별 목표 체중</h2>
+      <p class="section-desc">표준체중(키(m)² × 22[남] / 21[여]) 대비 90% · 100% · 110% 지점까지 감량/증량해야 하는 몸무게예요.</p>
+
+      <div class="targets">
+        <div class="target-card" id="target-90">
+          <span class="target-title">비만도 90%</span>
+          <span class="target-weight" data-target-weight></span>
+          <span class="target-diff" data-target-diff></span>
+        </div>
+        <div class="target-card highlight" id="target-100">
+          <span class="target-title">비만도 100% (표준)</span>
+          <span class="target-weight" data-target-weight></span>
+          <span class="target-diff" data-target-diff></span>
+        </div>
+        <div class="target-card" id="target-110">
+          <span class="target-title">비만도 110%</span>
+          <span class="target-weight" data-target-weight></span>
+          <span class="target-diff" data-target-diff></span>
+        </div>
+      </div>
+
+      <p class="disclaimer">※ 이 결과는 일반적인 계산식에 의한 참고용 정보이며, 의학적 진단을 대체하지 않습니다.</p>
+
+      <button id="reset-btn" class="secondary-btn">다시 계산하기</button>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

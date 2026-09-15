@@ -1,0 +1,199 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #1e1b3a 0%, #2d1b4e 50%, #1a2744 100%);
+  min-height: 100vh;
+  color: #e8e8f0;
+  padding: 24px 16px;
+}
+
+.app { max-width: 760px; margin: 0 auto; }
+
+.app-header { text-align: center; margin-bottom: 28px; }
+.app-header h1 { font-size: 1.9rem; margin-bottom: 8px; }
+.subtitle { color: #b0aecb; font-size: 0.95rem; }
+
+.screen {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 28px;
+  backdrop-filter: blur(6px);
+}
+
+.dropzone {
+  border: 2px dashed rgba(255,255,255,0.3);
+  border-radius: 14px;
+  padding: 50px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.dropzone:hover, .dropzone.dragover {
+  border-color: #8b7cf6;
+  background: rgba(139,124,246,0.1);
+}
+.dropzone-icon { font-size: 3rem; margin-bottom: 12px; }
+.dropzone-text { font-size: 1.05rem; margin-bottom: 6px; }
+.dropzone-hint { color: #9491b5; font-size: 0.85rem; }
+
+.error-text { color: #ff8080; margin-top: 14px; text-align: center; }
+.warning-text { color: #ffcf6e; margin-top: 10px; font-size: 0.9rem; }
+
+.loader {
+  width: 46px; height: 46px;
+  border: 4px solid rgba(255,255,255,0.15);
+  border-top-color: #8b7cf6;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  animation: spin 0.9s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+#loading-screen, #export-screen { text-align: center; }
+#loading-screen p, #export-screen p { color: #cfcde6; }
+
+.file-info-bar {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 22px; flex-wrap: wrap;
+}
+.file-name { font-weight: 700; font-size: 1.05rem; }
+.file-meta { color: #9491b5; font-size: 0.85rem; }
+.btn-text {
+  margin-left: auto;
+  background: none; border: none; color: #b7a9ff;
+  cursor: pointer; font-size: 0.9rem; text-decoration: underline;
+}
+
+.panel {
+  background: rgba(0,0,0,0.15);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.panel h2 { font-size: 1.05rem; margin-bottom: 14px; }
+
+.waveform-wrap { position: relative; width: 100%; }
+#waveform {
+  width: 100%; height: 120px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 8px;
+  display: block;
+  cursor: pointer;
+}
+.trim-overlay {
+  position: absolute; top: 0; left: 0; right: 0; height: 120px;
+  pointer-events: none;
+}
+.trim-region {
+  position: absolute; top: 0; bottom: 0;
+  background: rgba(139,124,246,0.25);
+  border-left: 2px solid #8b7cf6;
+  border-right: 2px solid #8b7cf6;
+}
+.trim-handle {
+  position: absolute; top: 0; bottom: 0; width: 14px;
+  background: #8b7cf6;
+  cursor: ew-resize;
+  pointer-events: all;
+  border-radius: 4px;
+  transform: translateX(-50%);
+  display: flex; align-items: center; justify-content: center;
+}
+.trim-handle::before {
+  content: '⋮'; color: white; font-size: 12px;
+}
+.playhead {
+  position: absolute; top: 0; bottom: 0; width: 2px;
+  background: #ffcf6e;
+  pointer-events: none;
+  display: none;
+}
+
+.trim-info {
+  display: flex; gap: 18px; flex-wrap: wrap;
+  align-items: center;
+  margin-top: 14px; font-size: 0.9rem; color: #cfcde6;
+}
+.trim-info strong { color: #fff; }
+
+.playback-controls { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+
+.btn-mini {
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+  color: #e8e8f0; border-radius: 6px; padding: 4px 10px; font-size: 0.8rem; cursor: pointer;
+}
+.btn-mini:hover { background: rgba(255,255,255,0.2); }
+
+.btn-secondary {
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25);
+  color: #e8e8f0; border-radius: 8px; padding: 10px 16px; font-size: 0.9rem; cursor: pointer;
+  transition: background 0.15s;
+}
+.btn-secondary:hover:not(:disabled) { background: rgba(255,255,255,0.22); }
+.btn-secondary:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.volume-row { display: flex; align-items: center; gap: 16px; }
+#volume-slider { flex: 1; accent-color: #8b7cf6; height: 6px; }
+.volume-label { font-weight: 700; min-width: 52px; text-align: right; }
+
+.format-options { display: flex; gap: 14px; margin-bottom: 14px; }
+.format-card {
+  flex: 1; position: relative; cursor: pointer;
+}
+.format-card input { position: absolute; opacity: 0; }
+.format-card-body {
+  display: block; padding: 16px; border-radius: 10px;
+  border: 2px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.05);
+  text-align: center;
+  transition: all 0.15s;
+}
+.format-card-body small { display: block; color: #9491b5; margin-top: 4px; font-size: 0.78rem; }
+.format-card input:checked + .format-card-body,
+.format-card-body.is-checked {
+  border-color: #8b7cf6;
+  background: rgba(139,124,246,0.2);
+}
+
+.bitrate-row { display: flex; align-items: center; gap: 10px; }
+.bitrate-row select {
+  background: rgba(0,0,0,0.3); color: #fff; border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 6px; padding: 6px 10px;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: linear-gradient(135deg, #8b7cf6, #6a5fd3);
+  color: white; border: none; border-radius: 10px;
+  padding: 14px 20px; font-size: 1rem; font-weight: 700;
+  cursor: pointer; text-align: center; text-decoration: none;
+  width: 100%;
+}
+.btn-primary:hover { filter: brightness(1.08); }
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-large { font-size: 1.05rem; padding: 16px; }
+
+.progress-bar-outer {
+  width: 100%; height: 10px; background: rgba(255,255,255,0.1);
+  border-radius: 6px; overflow: hidden; margin-top: 16px;
+}
+.progress-bar-inner {
+  height: 100%; width: 0%;
+  background: linear-gradient(90deg, #8b7cf6, #6a5fd3);
+  transition: width 0.2s;
+}
+
+#done-screen { text-align: center; }
+.done-icon { font-size: 3rem; margin-bottom: 10px; }
+.done-file-info { color: #cfcde6; margin: 10px 0 18px; }
+#done-audio-preview { width: 100%; margin-bottom: 20px; }
+.done-buttons { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.done-buttons .btn-primary { width: auto; padding: 12px 22px; }
+
+@media (max-width: 600px) {
+  .screen { padding: 18px; }
+  .format-options { flex-direction: column; }
+  .file-info-bar { flex-direction: column; align-items: flex-start; }
+  .btn-text { margin-left: 0; }
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF 병합기 | PDF Merger</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">📄</span>
+        <span class="logo-text">PDF 병합기</span>
+      </div>
+      <p class="header-sub">여러 개의 PDF 파일을 하나로 합쳐드려요</p>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- ============ 업로드 화면 ============ -->
+    <section id="uploadScreen" class="screen">
+      <div id="dropZone" class="drop-zone">
+        <div class="drop-icon">📥</div>
+        <h2>PDF 파일을 여기에 끌어다 놓으세요</h2>
+        <p>또는</p>
+        <button id="browseBtn" class="btn btn-primary">파일 선택하기</button>
+        <input type="file" id="fileInput" accept="application/pdf,.pdf" multiple hidden>
+        <p class="drop-hint">여러 개의 PDF를 한 번에 선택할 수 있어요 (각 파일 최대 50MB)</p>
+      </div>
+      <div id="uploadError" class="error-msg" hidden></div>
+    </section>
+
+    <!-- ============ 파일 목록 / 정렬 화면 ============ -->
+    <section id="listScreen" class="screen" hidden>
+      <div class="list-header">
+        <h2>병합할 순서를 정해주세요</h2>
+        <p class="list-sub">항목을 드래그해서 순서를 바꿀 수 있어요. 위에서부터 순서대로 합쳐집니다.</p>
+      </div>
+
+      <ul id="fileList" class="file-list"></ul>
+
+      <button id="addMoreBtn" class="btn btn-ghost">＋ 파일 더 추가하기</button>
+      <input type="file" id="fileInputMore" accept="application/pdf,.pdf" multiple hidden>
+
+      <div class="summary-bar">
+        <div class="summary-item">
+          <span class="summary-label">총 파일</span>
+          <span class="summary-value" id="totalFiles">0개</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label">총 페이지</span>
+          <span class="summary-value" id="totalPages">0페이지</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label">총 용량</span>
+          <span class="summary-value" id="totalSize">0KB</span>
+        </div>
+      </div>
+
+      <div class="action-row">
+        <button id="resetBtn" class="btn btn-ghost">처음부터 다시</button>
+        <button id="mergeBtn" class="btn btn-primary btn-big" disabled>📎 PDF 합치기</button>
+      </div>
+    </section>
+
+    <!-- ============ 병합 진행 화면 ============ -->
+    <section id="progressScreen" class="screen" hidden>
+      <div class="progress-box">
+        <div class="spinner"></div>
+        <h2 id="progressText">PDF를 병합하는 중입니다...</h2>
+        <div class="progress-bar-outer">
+          <div id="progressBarInner" class="progress-bar-inner"></div>
+        </div>
+        <p id="progressDetail" class="progress-detail"></p>
+      </div>
+    </section>
+
+    <!-- ============ 완료 화면 ============ -->
+    <section id="doneScreen" class="screen" hidden>
+      <div class="done-box">
+        <div class="done-icon">✅</div>
+        <h2>병합이 완료되었어요!</h2>
+        <p id="doneSummary" class="done-summary"></p>
+
+        <div class="result-card">
+          <div class="result-file-icon">📄</div>
+          <div class="result-file-info">
+            <div class="result-file-name" id="resultFileName">merged.pdf</div>
+            <div class="result-file-size" id="resultFileSize">0KB</div>
+          </div>
+        </div>
+
+        <div class="action-row">
+          <button id="downloadBtn" class="btn btn-primary btn-big">⬇️ 다운로드</button>
+        </div>
+        <button id="startOverBtn" class="btn btn-ghost">🔄 새로운 파일로 다시 시작하기</button>
+      </div>
+    </section>
+
+    <div id="toast" class="toast" hidden></div>
+
+  </main>
+
+  <footer class="footer">
+    <p>모든 처리는 브라우저 안에서만 이루어지며, 파일이 서버로 전송되지 않아요 🔒</p>
+  </footer>
+
+  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

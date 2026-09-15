@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GIF Studio</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="app-header">
+  <div class="header-inner">
+    <img src="logo.png" alt="logo" class="logo-img">
+    <h1 class="app-title">GIF Studio</h1>
+  </div>
+</header>
+
+<main class="main-content">
+
+  <!-- 업로드 전 화면 -->
+  <section id="uploadScreen" class="upload-screen">
+    <div class="upload-box" id="dropZone">
+      <div class="upload-icon">🖼️</div>
+      <p class="upload-text">GIF 파일을 드래그 앤 드롭하거나 클릭해서 업로드하세요</p>
+      <button class="btn btn-primary" id="chooseFileBtn">Choose a File</button>
+      <input type="file" id="fileInput" accept="image/gif" hidden>
+    </div>
+  </section>
+
+  <!-- 편집 화면 -->
+  <section id="editScreen" class="edit-screen" style="display:none;">
+
+    <div class="top-bar">
+      <button class="btn btn-secondary" id="chooseAnotherBtn">🔄 Choose Another File</button>
+    </div>
+
+    <div class="panels-row" id="panelsRow">
+
+      <!-- Original GIF 패널 -->
+      <div class="panel" id="originalPanel">
+        <div class="panel-header">
+          <button class="collapse-btn" id="originalCollapseBtn" title="패널 접기/펼치기">▼</button>
+          <h2>Original GIF</h2>
+          <button class="btn btn-download" id="originalDownloadBtn">⬇ Download</button>
+        </div>
+        <div class="panel-body" id="originalPanelBody">
+          <div class="preview-box">
+            <img id="originalPreview" class="preview-img" alt="Original GIF preview">
+          </div>
+          <div class="file-info" id="originalFileInfo">
+            <div class="info-item"><span class="info-label">File size</span><span class="info-value" id="infoSize">-</span></div>
+            <div class="info-item"><span class="info-label">Resolution</span><span class="info-value" id="infoResolution">-</span></div>
+            <div class="info-item"><span class="info-label">Frame rate</span><span class="info-value" id="infoFps">-</span></div>
+            <div class="info-item"><span class="info-label">Total frames</span><span class="info-value" id="infoFrames">-</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 결과 패널들이 동적으로 삽입될 컨테이너 -->
+      <div class="panels-dynamic" id="resultPanels"></div>
+
+      <!-- Editor Tools 패널 -->
+      <div class="panel" id="editorToolsPanel">
+        <div class="panel-header">
+          <h2>Editor Tools</h2>
+        </div>
+        <div class="panel-body">
+
+          <!-- 도구 버튼 그리드 -->
+          <div class="tools-grid" id="toolsGrid">
+            <button class="tool-btn" data-tool="resize"><span class="tool-icon">↔️</span><span>Resize</span></button>
+            <button class="tool-btn" data-tool="crop"><span class="tool-icon">✂️</span><span>Crop</span></button>
+            <button class="tool-btn" data-tool="downsize"><span class="tool-icon">📉</span><span>Downsizing</span></button>
+            <button class="tool-btn" data-tool="convert"><span class="tool-icon">🔄</span><span>Format Convert</span></button>
+            <button class="tool-btn" data-tool="rotate"><span class="tool-icon">🔁</span><span>Rotate</span></button>
+            <button class="tool-btn" data-tool="optimize"><span class="tool-icon">⚡</span><span>Optimize</span></button>
+            <button class="tool-btn" data-tool="reverse"><span class="tool-icon">⏪</span><span>Reverse</span></button>
+            <button class="tool-btn" data-tool="speed"><span class="tool-icon">⏱️</span><span>Speed</span></button>
+            <button class="tool-btn" data-tool="cut"><span class="tool-icon">🔪</span><span>Cut</span></button>
+          </div>
+
+          <!-- 각 도구별 옵션 패널 (동적 표시) -->
+          <div class="tool-options" id="toolOptions" style="display:none;"></div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- 라이브러리 -->
+<script src="https://cdn.jsdelivr.net/npm/gifuct-js@2.1.2/dist/gifuct-js.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gif.js.optimized@1.0.1/dist/gif.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gifsicle-wasm-browser@1.0.6/dist/index.js" type="module"></script>
+
+<script type="module" src="script.js"></script>
+</body>
+</html>
