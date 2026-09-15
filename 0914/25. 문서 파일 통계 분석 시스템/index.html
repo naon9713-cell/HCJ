@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>문서 글자 수 분석기</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📄 문서 분석기</h1>
+      <p class="subtitle">PDF · DOCX 파일의 글자 수 · 단어 수 · 공백 · 이미지 개수를 확인하세요</p>
+    </header>
+
+    <!-- 업로드 화면 -->
+    <section id="upload-screen" class="screen active">
+      <div id="dropzone" class="dropzone">
+        <div class="dropzone-icon">📁</div>
+        <p class="dropzone-text">파일을 드래그하거나 클릭하여 업로드</p>
+        <p class="dropzone-sub">지원 형식: PDF, DOCX (최대 50MB)</p>
+        <input type="file" id="file-input" accept=".pdf,.docx" hidden>
+      </div>
+      <p id="upload-error" class="error-msg" hidden></p>
+    </section>
+
+    <!-- 로딩 화면 -->
+    <section id="loading-screen" class="screen">
+      <div class="spinner"></div>
+      <p id="loading-text">문서를 분석하는 중입니다...</p>
+    </section>
+
+    <!-- 결과 화면 -->
+    <section id="result-screen" class="screen">
+      <div class="file-info">
+        <span id="file-name" class="file-name"></span>
+        <span id="file-meta" class="file-meta"></span>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card highlight">
+          <div class="stat-label">글자 수 (공백 포함)</div>
+          <div id="stat-chars-with-space" class="stat-value">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">글자 수 (공백 제외)</div>
+          <div id="stat-chars-no-space" class="stat-value">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">단어 수</div>
+          <div id="stat-words" class="stat-value">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">공백 개수</div>
+          <div id="stat-spaces" class="stat-value">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">이미지 개수</div>
+          <div id="stat-images" class="stat-value">0</div>
+        </div>
+        <div class="stat-card">
+          <div id="stat-extra-label" class="stat-label">페이지 수</div>
+          <div id="stat-extra" class="stat-value">0</div>
+        </div>
+      </div>
+
+      <details class="preview-box">
+        <summary>추출된 텍스트 미리보기</summary>
+        <pre id="text-preview"></pre>
+      </details>
+
+      <button id="reset-btn" class="btn-secondary">다른 파일 분석하기</button>
+    </section>
+
+    <section id="error-screen" class="screen">
+      <div class="error-icon">⚠️</div>
+      <p id="error-text">문서를 분석하는 중 오류가 발생했습니다.</p>
+      <button id="error-reset-btn" class="btn-secondary">다시 시도하기</button>
+    </section>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
