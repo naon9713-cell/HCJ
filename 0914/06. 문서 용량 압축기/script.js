@@ -1,7 +1,6 @@
 const dropzone = document.getElementById('dropzone');
-const fileInput = document.getElementById('fileInput');
-const uploadBtn = document.getElementById('uploadBtn');
-const fileList = document.getElementById('fileList');
+const fileInput = document.getElementById('file-input');
+const fileList = document.getElementById('file-cards-list');
 
 const DOC_EXTS = ['doc', 'docx', 'ppt', 'pptx'];
 const IMAGE_EXTS = ['jpg', 'jpeg', 'png', 'webp', 'gif', 'bmp'];
@@ -16,7 +15,6 @@ const LEGACY_BINARY = ['doc', 'ppt'];
 const PDF_RENDER_SCALE = 1.0;   // 1.0 = 원본 페이지 크기(72dpi) 그대로 캡처 → 이미 저해상도 효과
 const PDF_JPEG_QUALITY = 0.5;   // JPEG 품질 50% → 스캔본 느낌의 화질 저하
 
-uploadBtn.addEventListener('click', (e) => { e.stopPropagation(); fileInput.click(); });
 dropzone.addEventListener('click', () => fileInput.click());
 
 fileInput.addEventListener('change', (e) => {
